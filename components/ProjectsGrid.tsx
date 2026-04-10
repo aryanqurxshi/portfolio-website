@@ -11,7 +11,7 @@ interface ProjectsGridProps {
 
 export function ProjectsGrid({ items }: ProjectsGridProps) {
   return (
-    <div className="grid gap-6 lg:grid-cols-2">
+    <div className="grid gap-6 grid-cols-1 lg:grid-cols-2">
       {items.map((project, index) => {
         const hasImage = Boolean(project.image);
 
@@ -27,7 +27,7 @@ export function ProjectsGrid({ items }: ProjectsGridProps) {
               project.featured ? 'lg:col-span-2' : ''
             }`}
           >
-            <div className="grid gap-6 lg:grid-cols-[260px_minmax(0,1fr)]">
+            <div className="grid gap-6 grid-cols-1 lg:grid-cols-[260px_minmax(0,1fr)]">
               <div className="relative overflow-hidden rounded-[2rem] border border-retro bg-white/5 h-52 sm:h-64 lg:h-auto">
                 {hasImage ? (
                   <>
@@ -38,7 +38,7 @@ export function ProjectsGrid({ items }: ProjectsGridProps) {
                       className="object-cover transition duration-700 group-hover:scale-105"
                       sizes="(min-width: 1024px) 800px, 100vw"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
                   </>
                 ) : (
                   <div className="grid h-full place-items-center bg-white/5 text-gray-400">
@@ -50,15 +50,15 @@ export function ProjectsGrid({ items }: ProjectsGridProps) {
                 )}
               </div>
 
-              <div className="p-6 flex flex-col justify-between">
+              <div className="p-4 sm:p-6 flex flex-col justify-between">
                 <div>
-                  <div className="flex items-center justify-between gap-4">
-                    <p className="text-base uppercase tracking-[0.18em] text-purple/80 sm:text-sm">{project.featured ? 'Featured project' : 'Project'}</p>
-                    <span className="rounded-full bg-white/5 px-3 py-1 text-sm text-retro">{project.tags[0]}</span>
+                  <div className="flex items-center justify-between gap-2 sm:gap-4">
+                    <p className="text-xs sm:text-sm uppercase tracking-[0.18em] text-purple/80">{project.featured ? 'Featured project' : 'Project'}</p>
+                    <span className="rounded-full bg-white/5 px-2 sm:px-3 py-1 text-xs sm:text-sm text-retro whitespace-nowrap">{project.tags[0]}</span>
                   </div>
-                  <h3 className="mt-4 text-3xl font-semibold text-retro sm:text-4xl">{project.title}</h3>
+                  <h3 className="mt-4 text-2xl sm:text-3xl font-semibold text-retro">{project.title}</h3>
                 </div>
-                <p className="mt-4 text-base leading-8 text-retro sm:text-lg">{project.description}</p>
+                <p className="mt-4 text-sm sm:text-base leading-7 sm:leading-8 text-retro">{project.description}</p>
                 <div className="mt-5 flex flex-wrap gap-2">
                   {project.stack.map((tech) => (
                     <Tag key={tech} label={tech} />

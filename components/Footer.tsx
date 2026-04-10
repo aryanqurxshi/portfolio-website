@@ -2,18 +2,18 @@ import { socials } from '../data/socials';
 
 export function Footer() {
   return (
-    <footer className="border-t border-retro bg-retro-panel px-6 py-10 text-gray-400 sm:px-8">
-      <div className="mx-auto flex max-w-7xl flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
+    <footer className="border-t border-retro bg-retro-panel px-4 sm:px-6 py-8 sm:py-10 text-gray-400 lg:px-8">
+      <div className="mx-auto flex max-w-7xl flex-col gap-6 sm:gap-8 lg:flex-row lg:items-center lg:justify-between">
         <div>
-          <p className="text-sm font-semibold uppercase tracking-[0.34em] text-retro">Aryan Qureshi</p>
-          <p className="mt-2 text-sm text-gray-400">Electrical Engineering Student @ University of Ottawa</p>
+          <p className="text-xs sm:text-sm font-semibold uppercase tracking-[0.24em] sm:tracking-[0.34em] text-retro">Aryan Qureshi</p>
+          <p className="mt-2 text-xs sm:text-sm text-gray-400">Electrical Engineering Student @ University of Ottawa</p>
         </div>
-        <div className="flex flex-wrap items-center gap-4">
+        <div className="flex flex-wrap items-center gap-3 sm:gap-4">
           <a
             href={socials.github}
             target="_blank"
             rel="noreferrer"
-            className="rpg-secondary-button focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple/50"
+            className="rpg-secondary-button text-xs sm:text-sm px-3 sm:px-4 py-2 sm:py-2.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple/50"
           >
             GitHub
           </a>
@@ -21,13 +21,13 @@ export function Footer() {
             href={socials.linkedin}
             target="_blank"
             rel="noreferrer"
-            className="rpg-secondary-button focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple/50"
+            className="rpg-secondary-button text-xs sm:text-sm px-3 sm:px-4 py-2 sm:py-2.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple/50"
           >
             LinkedIn
           </a>
         </div>
       </div>
-      <div className="mt-8 border-t border-white/10 pt-6 text-sm text-gray-500">
+      <div className="mt-8 border-t border-white/10 pt-6 text-xs sm:text-sm text-gray-500">
         <p>© {new Date().getFullYear()} Aryan Qureshi.</p>
       </div>
     </footer>

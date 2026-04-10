@@ -16,13 +16,13 @@ export function SectionHeading({ title, subtitle }: SectionHeadingProps) {
       transition={{ duration: 0.65, ease: 'easeOut' }}
       className="mb-8 max-w-3xl"
     >
-      <p className="text-base uppercase tracking-[0.28em] text-purple/80">{title}</p>
+      <p className="text-xs sm:text-base uppercase tracking-[0.28em] text-purple/80">{title}</p>
       <div className="mt-4 flex items-center gap-3">
-        <span className="h-0.5 w-16 rounded-full bg-gradient-to-r from-purple to-transparent" />
-        <h2 className="text-4xl font-semibold tracking-tight text-white sm:text-5xl">{title}</h2>
+        <span className="h-0.5 w-12 sm:w-16 rounded-full bg-gradient-to-r from-purple to-transparent" />
+        <h2 className="text-2xl sm:text-4xl font-semibold tracking-tight text-white lg:text-5xl">{title}</h2>
       </div>
       {subtitle ? (
-        <p className="mt-4 text-base leading-8 text-gray-300 sm:text-lg">{subtitle}</p>
+        <p className="mt-4 text-xs sm:text-base leading-6 sm:leading-8 text-gray-300 lg:text-lg">{subtitle}</p>
       ) : null}
       <div className="rpg-panel-corners">
         <div className="rpg-corner rpg-corner-tl" />

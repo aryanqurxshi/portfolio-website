@@ -151,10 +151,10 @@ export default function HomePage() {
   };
 
   return (
-    <main className="relative overflow-hidden">
+    <main className="relative">
       <Navbar theme={theme} onToggleTheme={() => setTheme(theme === 'dark' ? 'light' : 'dark')} />
       <div className="pointer-events-none absolute inset-x-0 top-0 h-[420px] bg-hero opacity-80 blur-3xl" />
-      <div className="mx-auto max-w-7xl px-6 pb-24 lg:px-8">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 pb-24 lg:px-8">
         <HeroSection
           menuOptions={menuItems}
           onSelect={(key) => setOpenPanel(key as PanelKey)}

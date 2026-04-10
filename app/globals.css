@@ -29,6 +29,9 @@ html.theme-light {
 html, body {
   scroll-behavior: auto;
   overscroll-behavior: none;
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
 }
 
 html {
@@ -45,6 +48,8 @@ html {
     align-items: flex-start;
     justify-content: center;
     scroll-margin-top: 0 !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
   }
 
   html {

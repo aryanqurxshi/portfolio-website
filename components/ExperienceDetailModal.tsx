@@ -72,31 +72,31 @@ export function ExperienceDetailModal({ item, onClose }: ExperienceDetailModalPr
                   <p className="text-sm uppercase tracking-[0.32em] text-purple/60">{item.company}</p>
                   <div className="space-y-2 sm:space-y-0 sm:flex sm:items-end sm:justify-between sm:gap-4">
                     <div>
-                      <h2 id="experience-modal-title" className="retro-heading text-5xl font-semibold tracking-tight text-retro sm:text-6xl">
+                      <h2 id="experience-modal-title" className="retro-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-retro">
                         {item.title}
                       </h2>
-                      <p className="mt-3 text-base leading-7 text-retro/70 sm:max-w-2xl">
+                      <p className="mt-3 text-xs sm:text-base leading-5 sm:leading-7 text-retro/70">
                         {item.location} · {item.range}
                       </p>
                     </div>
                 </div>
               </div>
 
-              <div className="space-y-6 rounded-[1.75rem] border border-retro bg-retro-surface p-6 shadow-sm">
+              <div className="space-y-6 rounded-[1.75rem] border border-retro bg-retro-surface p-4 sm:p-6 shadow-sm">
                 <div className="space-y-3">
-                  <h3 className="text-xl font-semibold text-retro sm:text-2xl">Overview</h3>
-                  <p id="experience-modal-description" className="text-base leading-8 text-retro/80 sm:text-lg">
+                  <h3 className="text-sm sm:text-xl font-semibold text-retro sm:text-2xl">Overview</h3>
+                  <p id="experience-modal-description" className="text-xs sm:text-base leading-6 sm:leading-8 text-retro/80 lg:text-lg">
                     {item.summary}
                   </p>
                 </div>
 
                 <div className="space-y-6 divide-y divide-white/10">
                   {item.whatIDid?.length ? (
-                    <section className="space-y-4 py-6">
+                    <section className="space-y-3 sm:space-y-4 py-4 sm:py-6">
                       <div className="flex items-center justify-between gap-4">
                         <div>
-                          <p className="text-sm uppercase tracking-[0.32em] text-purple/70">What I did</p>
-                          <h3 className="mt-2 text-2xl font-semibold text-retro">Primary contribution</h3>
+                          <p className="text-xs sm:text-sm uppercase tracking-[0.32em] text-purple/70">What I did</p>
+                          <h3 className="mt-2 text-lg sm:text-2xl font-semibold text-retro">Primary contribution</h3>
                         </div>
                       </div>
                       <ul className="space-y-3 text-base leading-8 text-retro/80">
@@ -111,14 +111,14 @@ export function ExperienceDetailModal({ item, onClose }: ExperienceDetailModalPr
                   ) : null}
 
                   {item.howIDid?.length ? (
-                    <section className="space-y-4 py-6">
+                    <section className="space-y-3 sm:space-y-4 py-4 sm:py-6">
                       <div className="flex items-center justify-between gap-4">
                         <div>
-                          <p className="text-sm uppercase tracking-[0.32em] text-purple/70">How I did it</p>
-                          <h3 className="mt-2 text-2xl font-semibold text-retro">Approach</h3>
+                          <p className="text-xs sm:text-sm uppercase tracking-[0.32em] text-purple/70">How I did it</p>
+                          <h3 className="mt-2 text-lg sm:text-2xl font-semibold text-retro">Approach</h3>
                         </div>
                       </div>
-                      <ul className="space-y-3 text-base leading-8 text-retro/80">
+                      <ul className="space-y-2 sm:space-y-3 text-xs sm:text-base leading-6 sm:leading-8 text-retro/80">
                         {item.howIDid.map((entry) => (
                           <li key={entry} className="flex gap-3">
                             <span className="mt-1 h-2 w-2 rounded-full bg-purple" />
@@ -130,10 +130,10 @@ export function ExperienceDetailModal({ item, onClose }: ExperienceDetailModalPr
                   ) : null}
 
                   {item.skillsLearned?.length ? (
-                    <section className="space-y-4 py-6">
+                    <section className="space-y-3 sm:space-y-4 py-4 sm:py-6">
                       <div>
-                        <p className="text-sm uppercase tracking-[0.32em] text-purple/70">Skills learned</p>
-                        <h3 className="mt-2 text-2xl font-semibold text-retro">New capabilities</h3>
+                        <p className="text-xs sm:text-sm uppercase tracking-[0.32em] text-purple/70">Skills learned</p>
+                        <h3 className="mt-2 text-lg sm:text-2xl font-semibold text-retro">New capabilities</h3>
                       </div>
                       <div className="flex flex-wrap gap-2">
                         {item.skillsLearned.map((skill) => (
@@ -144,10 +144,10 @@ export function ExperienceDetailModal({ item, onClose }: ExperienceDetailModalPr
                   ) : null}
 
                   {item.technologies?.length ? (
-                    <section className="space-y-4 py-6">
+                    <section className="space-y-3 sm:space-y-4 py-4 sm:py-6">
                       <div>
-                        <p className="text-sm uppercase tracking-[0.32em] text-purple/70">Technologies</p>
-                        <h3 className="mt-2 text-2xl font-semibold text-retro">Tools used</h3>
+                        <p className="text-xs sm:text-sm uppercase tracking-[0.32em] text-purple/70">Technologies</p>
+                        <h3 className="mt-2 text-lg sm:text-2xl font-semibold text-retro">Tools used</h3>
                       </div>
                       <div className="flex flex-wrap gap-2">
                         {item.technologies.map((tech) => (
@@ -158,12 +158,12 @@ export function ExperienceDetailModal({ item, onClose }: ExperienceDetailModalPr
                   ) : null}
 
                   {item.achievements?.length ? (
-                    <section className="space-y-4 py-6">
+                    <section className="space-y-3 sm:space-y-4 py-4 sm:py-6">
                       <div>
-                        <p className="text-sm uppercase tracking-[0.32em] text-purple/70">Achievements</p>
-                        <h3 className="mt-2 text-2xl font-semibold text-retro">Notable outcomes</h3>
+                        <p className="text-xs sm:text-sm uppercase tracking-[0.32em] text-purple/70">Achievements</p>
+                        <h3 className="mt-2 text-lg sm:text-2xl font-semibold text-retro">Results & impact</h3>
                       </div>
-                      <ul className="space-y-3 text-base leading-8 text-retro/80">
+                      <ul className="space-y-2 sm:space-y-3 text-xs sm:text-base leading-6 sm:leading-8 text-retro/80">
                         {item.achievements.map((achievement) => (
                           <li key={achievement} className="flex gap-3">
                             <span className="mt-1 h-2 w-2 rounded-full bg-purple" />

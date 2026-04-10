@@ -27,18 +27,18 @@ export function AwardsSection({ items }: AwardsSectionProps) {
           whileHover={{ y: -5 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.6, delay: index * 0.06, type: 'spring', bounce: 0.14 }}
-          className="group rounded-[2rem] border border-retro bg-retro-panel p-7 shadow-soft transition hover:border-purple/40 hover:bg-purple/10"
+          className="group rounded-[2rem] border border-retro bg-retro-panel p-4 sm:p-6 md:p-7 shadow-soft transition hover:border-purple/40 hover:bg-purple/10"
         >
-          <div className="pointer-events-none absolute inset-x-6 top-0 h-[1px] bg-gradient-to-r from-purple/70 via-purple/30 to-transparent opacity-0 transition duration-500 group-hover:opacity-100" />
-          <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+          <div className="pointer-events-none absolute inset-x-4 sm:inset-x-6 top-0 h-[1px] bg-gradient-to-r from-purple/70 via-purple/30 to-transparent opacity-0 transition duration-500 group-hover:opacity-100" />
+          <div className="flex flex-col gap-3 sm:gap-4 sm:flex-row sm:items-start sm:justify-between">
             <div>
-              <p className="text-base uppercase tracking-[0.28em] text-purple/80">{award.organization}</p>
-              <h3 className="mt-3 text-3xl font-semibold text-white sm:text-4xl">{award.title}</h3>
-              <p className="mt-2 text-base text-gray-400">{award.category} · {award.date}</p>
+              <p className="text-xs sm:text-base uppercase tracking-[0.28em] text-purple/80">{award.organization}</p>
+              <h3 className="mt-3 text-xl sm:text-3xl font-semibold text-white lg:text-4xl">{award.title}</h3>
+              <p className="mt-2 text-xs sm:text-base text-gray-400">{award.category} · {award.date}</p>
             </div>
           </div>
-          <p className="mt-6 text-base leading-8 text-gray-300 sm:text-lg">{award.summary}</p>
-          <p className="mt-6 text-base leading-8 text-gray-300 sm:text-lg">{award.description}</p>
+          <p className="mt-6 text-xs sm:text-base leading-6 sm:leading-8 text-gray-300 lg:text-lg">{award.summary}</p>
+          <p className="mt-6 text-xs sm:text-base leading-6 sm:leading-8 text-gray-300 lg:text-lg">{award.description}</p>
           {award.images.length > 0 && (
             <div className={`mt-6 grid gap-4 ${award.images.length > 1 ? 'sm:grid-cols-2' : 'sm:grid-cols-1'}`}>
               {award.images.map((src) => (

@@ -46,9 +46,9 @@ export function ContactForm() {
   };
 
   return (
-    <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr]">
-      <form onSubmit={handleSubmit} className="space-y-6 rpg-card p-8">
-        <div className="grid gap-4 sm:grid-cols-2">
+    <div className="grid gap-6 sm:gap-10 grid-cols-1 lg:grid-cols-[1.1fr_0.9fr]">
+      <form onSubmit={handleSubmit} className="space-y-6 rpg-card p-4 sm:p-6 md:p-8">
+        <div className="grid gap-4 grid-cols-1 sm:grid-cols-2">
           <label className="space-y-2 text-sm text-gray-200">
             <span>Name</span>
             <input
@@ -114,8 +114,8 @@ export function ContactForm() {
           Send message
         </motion.button>
       </form>
-      <aside className="rpg-card p-8">
-        <p className="text-sm uppercase tracking-[0.28em] text-purple/80">Alternate contact</p>
+      <aside className="rpg-card p-4 sm:p-6 md:p-8">
+        <p className="text-xs sm:text-sm uppercase tracking-[0.28em] text-purple/80">Alternate contact</p>
         <div className="mt-6 space-y-6 text-sm text-gray-300">
           <div>
             <p className="text-xs uppercase tracking-[0.24em] text-gray-500">Email</p>

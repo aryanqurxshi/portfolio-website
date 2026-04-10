@@ -14,12 +14,12 @@ interface GitHubSectionProps {
 
 export function GitHubSection({ profile }: GitHubSectionProps) {
   return (
-    <div className="rpg-card p-8">
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+    <div className="rpg-card p-4 sm:p-6 md:p-8">
+      <div className="flex flex-col gap-4 sm:gap-4">
         <div>
-          <p className="text-sm uppercase tracking-[0.28em] text-purple/80">GitHub profile</p>
-          <h3 className="mt-4 retro-heading text-3xl font-semibold text-retro">{profile.username}</h3>
-          <p className="mt-4 max-w-2xl text-sm leading-7 text-gray-300">{profile.summary}</p>
+          <p className="text-xs sm:text-sm uppercase tracking-[0.28em] text-purple/80">GitHub profile</p>
+          <h3 className="mt-4 retro-heading text-2xl sm:text-3xl font-semibold text-retro">{profile.username}</h3>
+          <p className="mt-4 max-w-2xl text-xs sm:text-sm leading-6 sm:leading-7 text-gray-300">{profile.summary}</p>
         </div>
         <a
           href={profile.url}
@@ -42,7 +42,7 @@ export function GitHubSection({ profile }: GitHubSectionProps) {
             whileHover={{ y: -6 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: index * 0.05, type: 'spring', bounce: 0.14 }}
-            className="group relative overflow-hidden rounded-[1.75rem] border border-retro bg-retro-surface p-6 transition hover:border-purple/40 hover:bg-white/10"
+            className="group relative overflow-hidden rounded-[1.75rem] border border-retro bg-retro-surface p-4 sm:p-6 transition hover:border-purple/40 hover:bg-white/10\"
           >
             <div className="pointer-events-none absolute -top-6 right-0 h-24 w-24 rounded-full bg-purple/10 blur-3xl opacity-0 transition duration-500 group-hover:opacity-100" />
             <div className="flex items-center justify-between gap-4">
