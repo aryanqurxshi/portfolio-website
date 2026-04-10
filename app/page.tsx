@@ -1,9 +1,10 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { useEffect, useState } from 'react';
+import { AnimatePresence } from 'framer-motion';
 import { Navbar } from '../components/Navbar';
 import { HeroSection } from '../components/HeroSection';
-import { SectionHeading } from '../components/SectionHeading';
+import { RPGPanel } from '../components/RPGPanel';
 import { ExperienceTimeline } from '../components/ExperienceTimeline';
 import { EducationSection } from '../components/EducationSection';
 import { AwardsSection } from '../components/AwardsSection';
@@ -21,103 +22,157 @@ import { caseStudies } from '../data/caseStudies';
 import { githubProfile } from '../data/github';
 import { linkedinProfile } from '../data/linkedin';
 
+const menuItems = [
+  {
+    key: 'experience',
+    label: 'Experience',
+    description: 'Career story & battle-tested skills',
+    icon: '⚔️',
+  },
+  {
+    key: 'projects',
+    label: 'Projects',
+    description: 'Playable product builds with pixel frames',
+    icon: '🧩',
+  },
+  {
+    key: 'caseStudies',
+    label: 'Case Studies',
+    description: 'In-depth design decisions and outcomes',
+    icon: '📜',
+  },
+  {
+    key: 'education',
+    label: 'Education',
+    description: 'Training, coursework, and technical growth',
+    icon: '🎓',
+  },
+  {
+    key: 'awards',
+    label: 'Awards',
+    description: 'Achievements and honors unlocked',
+    icon: '🏆',
+  },
+  {
+    key: 'github',
+    label: 'GitHub',
+    description: 'Tools, repos, and side quests',
+    icon: '💾',
+  },
+  {
+    key: 'linkedin',
+    label: 'LinkedIn',
+    description: 'Professional network and account details',
+    icon: '📝',
+  },
+  {
+    key: 'contact',
+    label: 'Contact',
+    description: 'Reach out with a mission or collaboration request',
+    icon: '✉️',
+  },
+] as const;
+
+type PanelKey = (typeof menuItems)[number]['key'];
+
+const panelMetadata: Record<PanelKey, { title: string; subtitle: string }> = {
+  experience: {
+    title: 'Experience',
+    subtitle: 'Explore my career journey, selected roles, and what I built.',
+  },
+  projects: {
+    title: 'Projects',
+    subtitle: 'A retro panel of code, product work, and UX experiments.',
+  },
+  caseStudies: {
+    title: 'Case Studies',
+    subtitle: 'Deeper stories of strategy, execution, and outcomes.',
+  },
+  education: {
+    title: 'Education',
+    subtitle: 'My academic path and the knowledge I leveled up.',
+  },
+  awards: {
+    title: 'Awards',
+    subtitle: 'Milestones, recognition, and portfolio achievements.',
+  },
+  github: {
+    title: 'GitHub',
+    subtitle: 'Repositories, tools, and open-source contributions.',
+  },
+  linkedin: {
+    title: 'LinkedIn',
+    subtitle: 'Professional networking, experience, and contact methods.',
+  },
+  contact: {
+    title: 'Contact',
+    subtitle: 'Send a message or connect through email and socials.',
+  },
+};
+
 export default function HomePage() {
+  const [openPanel, setOpenPanel] = useState<PanelKey | null>(null);
+  const [theme, setTheme] = useState<'dark' | 'light'>('dark');
+
+  useEffect(() => {
+    const stored = window.localStorage.getItem('portfolio-theme');
+    if (stored === 'light' || stored === 'dark') {
+      setTheme(stored);
+    }
+  }, []);
+
+  useEffect(() => {
+    document.documentElement.classList.toggle('theme-light', theme === 'light');
+    document.documentElement.classList.toggle('theme-dark', theme === 'dark');
+    window.localStorage.setItem('portfolio-theme', theme);
+  }, [theme]);
+
+  const renderPanelContent = () => {
+    switch (openPanel) {
+      case 'experience':
+        return <ExperienceTimeline items={experience} />;
+      case 'education':
+        return <EducationSection items={education} />;
+      case 'awards':
+        return <AwardsSection items={awards} />;
+      case 'projects':
+        return <ProjectsGrid items={projects} />;
+      case 'caseStudies':
+        return <CaseStudiesSection items={caseStudies} />;
+      case 'github':
+        return <GitHubSection profile={githubProfile} />;
+      case 'linkedin':
+        return <LinkedInSection profile={linkedinProfile} />;
+      case 'contact':
+        return <ContactForm />;
+      default:
+        return null;
+    }
+  };
+
   return (
     <main className="relative overflow-hidden">
-      <Navbar />
+      <Navbar theme={theme} onToggleTheme={() => setTheme(theme === 'dark' ? 'light' : 'dark')} />
       <div className="pointer-events-none absolute inset-x-0 top-0 h-[420px] bg-hero opacity-80 blur-3xl" />
-      <div className="mx-auto max-w-7xl px-6 pb-24 pt-6 lg:px-8">
-        <HeroSection />
-        <motion.section
-          id="experience"
-          className="mt-24"
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.25 }}
-          transition={{ duration: 0.7, ease: 'easeOut' }}
-        >
-          <SectionHeading title="Experience" />
-          <ExperienceTimeline items={experience} />
-        </motion.section>
-        <motion.section
-          id="education"
-          className="mt-24"
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.25 }}
-          transition={{ duration: 0.7, ease: 'easeOut', delay: 0.1 }}
-        >
-          <SectionHeading title="Education" subtitle="My academic foundation and technical training." />
-          <EducationSection items={education} />
-        </motion.section>
-        <motion.section
-          id="awards"
-          className="mt-24"
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.25 }}
-          transition={{ duration: 0.7, ease: 'easeOut', delay: 0.15 }}
-        >
-          <SectionHeading title="Awards" subtitle="Recognition and milestones from academic and professional achievements." />
-          <AwardsSection items={awards} />
-        </motion.section>
-        <motion.section
-          id="projects"
-          className="mt-24"
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.25 }}
-          transition={{ duration: 0.7, ease: 'easeOut', delay: 0.2 }}
-        >
-          <SectionHeading title="Projects" />
-          <ProjectsGrid items={projects} />
-        </motion.section>
-        <motion.section
-          id="case-studies"
-          className="mt-24"
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.25 }}
-          transition={{ duration: 0.7, ease: 'easeOut', delay: 0.2 }}
-        >
-          <SectionHeading title="Case Studies" subtitle="In-depth stories that describe my process, decisions, and outcomes." />
-          <CaseStudiesSection items={caseStudies} />
-        </motion.section>
-        <div className="grid gap-12 xl:grid-cols-[1.2fr_0.8fr] xl:gap-10">
-          <motion.section
-            id="github"
-            className="mt-24"
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.25 }}
-            transition={{ duration: 0.7, ease: 'easeOut', delay: 0.3 }}
-          >
-            <SectionHeading title="GitHub" subtitle="A curated view of repositories, tools, and side projects." />
-            <GitHubSection profile={githubProfile} />
-          </motion.section>
-          <motion.section
-            id="linkedin"
-            className="mt-24"
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.25 }}
-            transition={{ duration: 0.7, ease: 'easeOut', delay: 0.35 }}
-          >
-            <SectionHeading title="LinkedIn" subtitle="Professional perspective and networking built for product leadership." />
-            <LinkedInSection profile={linkedinProfile} />
-          </motion.section>
-        </div>
-        <motion.section
-          id="contact"
-          className="mt-24"
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.7, ease: 'easeOut', delay: 0.4 }}
-        >
-          <SectionHeading title="Contact" subtitle="Send a message or connect through email, GitHub, or LinkedIn." />
-          <ContactForm />
-        </motion.section>
+      <div className="mx-auto max-w-7xl px-6 pb-24 lg:px-8">
+        <HeroSection
+          menuOptions={menuItems}
+          onSelect={(key) => setOpenPanel(key as PanelKey)}
+          isPanelOpen={Boolean(openPanel)}
+          onClosePanel={() => setOpenPanel(null)}
+        />
+        <AnimatePresence>
+          {openPanel ? (
+            <RPGPanel
+              title={panelMetadata[openPanel].title}
+              subtitle={panelMetadata[openPanel].subtitle}
+              isOpen={Boolean(openPanel)}
+              onClose={() => setOpenPanel(null)}
+            >
+              {renderPanelContent()}
+            </RPGPanel>
+          ) : null}
+        </AnimatePresence>
       </div>
       <Footer />
     </main>

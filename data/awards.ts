@@ -16,8 +16,8 @@ export const awards: AwardItem[] = [
     organization: 'University of Ottawa',
     project: 'EmotiCare',
     category: 'Childcare Monitoring Systems',
-    date: '',
-    location: '',
+    date: 'April 2026',
+    location: 'Ottawa, ON',
     summary:
       'Awarded for winning CEED Design Day at the University of Ottawa for EmotiCare, a childcare monitoring system focused on improving child safety, caregiver awareness, and peace of mind for families.',
     description:

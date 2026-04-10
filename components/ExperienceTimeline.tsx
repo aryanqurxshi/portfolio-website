@@ -31,7 +31,7 @@ export function ExperienceTimeline({ items }: ExperienceTimelineProps) {
             whileHover={{ y: -6 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.6, delay: index * 0.08, type: 'spring', bounce: 0.13 }}
-            className="group relative cursor-pointer overflow-hidden rounded-[2rem] border border-white/10 bg-black/60 p-7 shadow-glow transition duration-300 hover:border-purple/40 hover:bg-surface/90 focus:outline-none focus:ring-2 focus:ring-purple/50"
+            className="group relative cursor-pointer overflow-hidden rpg-card p-7 transition duration-300 hover:border-purple/40 hover:bg-purple/10 focus:outline-none focus:ring-2 focus:ring-purple/50"
             role="button"
             tabIndex={0}
             onClick={() => handleOpen(item)}

@@ -47,7 +47,7 @@ export function ContactForm() {
 
   return (
     <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr]">
-      <form onSubmit={handleSubmit} className="space-y-6 rounded-[2rem] border border-white/10 bg-black/60 p-8 shadow-soft">
+      <form onSubmit={handleSubmit} className="space-y-6 rpg-card p-8">
         <div className="grid gap-4 sm:grid-cols-2">
           <label className="space-y-2 text-sm text-gray-200">
             <span>Name</span>
@@ -55,7 +55,7 @@ export function ContactForm() {
               value={form.name}
               onChange={handleChange('name')}
               placeholder="Your name"
-              className="w-full rounded-3xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white outline-none transition focus:border-purple/50"
+              className="rpg-input"
             />
           </label>
           <label className="space-y-2 text-sm text-gray-200">
@@ -65,7 +65,7 @@ export function ContactForm() {
               onChange={handleChange('email')}
               placeholder="you@example.com"
               type="email"
-              className="w-full rounded-3xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white outline-none transition focus:border-purple/50"
+              className="rpg-input"
             />
           </label>
         </div>
@@ -75,7 +75,7 @@ export function ContactForm() {
             value={form.subject}
             onChange={handleChange('subject')}
             placeholder="Project inquiry or quick hello"
-            className="w-full rounded-3xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white outline-none transition focus:border-purple/50"
+            className="rpg-input"
           />
         </label>
         <label className="space-y-2 text-sm text-gray-200">
@@ -85,7 +85,7 @@ export function ContactForm() {
             onChange={handleChange('message')}
             placeholder="Tell me about your project, timeline, or collaboration goals..."
             rows={6}
-            className="w-full rounded-[1.5rem] border border-white/10 bg-white/5 px-4 py-4 text-sm text-white outline-none transition focus:border-purple/50"
+            className="rpg-input"
           />
         </label>
         {status === 'error' && (
@@ -108,13 +108,13 @@ export function ContactForm() {
           whileHover={{ y: -2 }}
           whileTap={{ scale: 0.98 }}
           transition={{ type: 'spring', stiffness: 260, damping: 18 }}
-          className="inline-flex items-center justify-center rounded-full bg-purple px-6 py-3 text-sm font-semibold text-black transition hover:bg-purple/90 disabled:cursor-not-allowed disabled:opacity-70"
+          className="rpg-button focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple/50 disabled:cursor-not-allowed disabled:opacity-70"
           disabled={!isValid}
         >
           Send message
         </motion.button>
       </form>
-      <aside className="rounded-[2rem] border border-white/10 bg-black/60 p-8 shadow-soft">
+      <aside className="rpg-card p-8">
         <p className="text-sm uppercase tracking-[0.28em] text-purple/80">Alternate contact</p>
         <div className="mt-6 space-y-6 text-sm text-gray-300">
           <div>

@@ -8,11 +8,8 @@ interface ButtonProps extends PropsWithChildren {
 }
 
 export function Button({ href, type = 'button', variant = 'primary', onClick, children }: ButtonProps) {
-  const base = 'inline-flex items-center justify-center rounded-full px-5 py-3 text-sm font-semibold transition';
-  const styles =
-    variant === 'primary'
-      ? 'bg-purple text-black hover:bg-purple/90'
-      : 'border border-white/10 bg-white/5 text-gray-200 hover:border-purple/40 hover:text-white';
+  const base = 'inline-flex items-center justify-center rounded-full px-5 py-3 text-sm font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple/50 active:translate-x-[1px]';
+  const styles = variant === 'primary' ? 'rpg-button' : 'rpg-secondary-button';
 
   if (href) {
     return (

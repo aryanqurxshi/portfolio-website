@@ -14,18 +14,18 @@ interface GitHubSectionProps {
 
 export function GitHubSection({ profile }: GitHubSectionProps) {
   return (
-    <div className="rounded-[2rem] border border-white/10 bg-black/60 p-8 shadow-soft">
+    <div className="rpg-card p-8">
       <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
         <div>
           <p className="text-sm uppercase tracking-[0.28em] text-purple/80">GitHub profile</p>
-          <h3 className="mt-4 text-3xl font-semibold text-white">{profile.username}</h3>
+          <h3 className="mt-4 retro-heading text-3xl font-semibold text-retro">{profile.username}</h3>
           <p className="mt-4 max-w-2xl text-sm leading-7 text-gray-300">{profile.summary}</p>
         </div>
         <a
           href={profile.url}
           target="_blank"
           rel="noreferrer"
-          className="rounded-full border border-purple/30 bg-purple/10 px-5 py-3 text-sm text-purple transition hover:bg-purple/15"
+          className="rpg-button focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple/50"
         >
           View profile
         </a>
@@ -42,11 +42,11 @@ export function GitHubSection({ profile }: GitHubSectionProps) {
             whileHover={{ y: -6 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: index * 0.05, type: 'spring', bounce: 0.14 }}
-            className="group relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-6 transition hover:border-purple/40 hover:bg-white/10"
+            className="group relative overflow-hidden rounded-[1.75rem] border border-retro bg-retro-surface p-6 transition hover:border-purple/40 hover:bg-white/10"
           >
             <div className="pointer-events-none absolute -top-6 right-0 h-24 w-24 rounded-full bg-purple/10 blur-3xl opacity-0 transition duration-500 group-hover:opacity-100" />
             <div className="flex items-center justify-between gap-4">
-              <h4 className="text-lg font-semibold text-white">{repo.name}</h4>
+              <h4 className="text-lg font-semibold text-retro">{repo.name}</h4>
               <span className="rounded-full bg-purple/10 px-3 py-1 text-xs text-purple">{repo.language}</span>
             </div>
             <p className="mt-3 text-sm leading-7 text-gray-300">{repo.description}</p>

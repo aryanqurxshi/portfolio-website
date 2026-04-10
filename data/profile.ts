@@ -3,7 +3,7 @@ export const profile = {
   title: 'Electrical Engineering Student @ University of Ottawa',
   tagline: '',
   intro:
-    'Passionate about building innovative tech. I’m especially interested in applying engineering and AI to solve real-world problems and create impactful products.',
+    'passionate about ai & hardware',
   cta: {
     projects: 'projects',
     caseStudies: 'case-studies',

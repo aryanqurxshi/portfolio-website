@@ -27,7 +27,8 @@ const config: Config = {
         hero: 'radial-gradient(circle at top, rgba(159, 122, 234, 0.16), transparent 35%), radial-gradient(circle at 80% 15%, rgba(124, 58, 237, 0.08), transparent 22%)',
       },
       fontFamily: {
-        display: ['Inter', 'system-ui', 'sans-serif'],
+        display: ['"Press Start 2P"', 'monospace'],
+        retro: ['"VT323"', 'monospace'],
       },
     },
   },
