@@ -151,7 +151,7 @@ export default function HomePage() {
   };
 
   return (
-    <main className="relative">
+    <main className="relative overflow-x-hidden">
       <Navbar theme={theme} onToggleTheme={() => setTheme(theme === 'dark' ? 'light' : 'dark')} />
       <div className="pointer-events-none absolute inset-x-0 top-0 h-[420px] bg-hero opacity-80 blur-3xl" />
       <div className="mx-auto max-w-7xl px-4 sm:px-6 pb-24 lg:px-8">

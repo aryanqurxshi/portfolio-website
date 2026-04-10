@@ -28,10 +28,11 @@ html.theme-light {
 
 html, body {
   scroll-behavior: auto;
-  overscroll-behavior: none;
+  overscroll-behavior-y: auto;
+  overscroll-behavior-x: none;
   width: 100%;
-  max-width: 100vw;
   overflow-x: hidden;
+  overflow-y: scroll;
 }
 
 html {
@@ -264,6 +265,7 @@ body {
     overflow: visible;
     min-height: 20rem;
     width: min(100%, 22rem);
+    pointer-events: none;
   }
 
   .hero-portrait-shell {
@@ -276,6 +278,7 @@ body {
     border: 1px solid rgba(255, 255, 255, 0.08);
     box-shadow: inset 0 0 60px rgba(255, 255, 255, 0.02), 0 30px 100px rgba(0, 0, 0, 0.25);
     perspective: 900px;
+    pointer-events: none;
   }
 
   .hero-portrait-screen {
@@ -384,6 +387,7 @@ body {
     background-size: 100% 100%, 100% 4px, 28px 28px, 1px 18px;
     opacity: 0.36;
     mix-blend-mode: screen;
+    pointer-events: none;
   }
 
   .hero-portrait-environment::after {
@@ -426,6 +430,7 @@ body {
     background: rgba(159, 122, 234, 0.35);
     opacity: 0.55;
     box-shadow: 0 0 24px rgba(159, 122, 234, 0.25);
+    pointer-events: none;
   }
 
   .hero-portrait-image {
@@ -549,11 +554,11 @@ body {
   }
 
   .rpg-button {
-    @apply inline-flex items-center justify-center rounded-full border border-purple/30 bg-purple/10 px-5 py-3 text-base font-semibold text-purple;
+    @apply inline-flex items-center justify-center rounded-full border border-purple/30 bg-purple/10 px-5 py-3 text-base font-semibold text-purple pointer-events-auto;
   }
 
   .rpg-secondary-button {
-    @apply inline-flex items-center justify-center rounded-full border border-white/10 bg-white/5 px-5 py-3 text-base text-gray-200;
+    @apply inline-flex items-center justify-center rounded-full border border-white/10 bg-white/5 px-5 py-3 text-base text-gray-200 pointer-events-auto;
   }
 
   .rpg-button:hover,
@@ -595,6 +600,7 @@ body {
     color: #d4d4d8;
     cursor: pointer;
     position: relative;
+    pointer-events: auto;
   }
 
   .rpg-menu-item-active {
@@ -628,6 +634,7 @@ body {
     outline: none;
     transition: border-color 0.2s ease, background-color 0.2s ease;
     border: 1px solid var(--border);
+    pointer-events: auto;
   }
 
   .rpg-input:focus {
@@ -635,7 +642,7 @@ body {
   }
 
   .rpg-button {
-    @apply inline-flex items-center justify-center rounded-full border border-purple/30 bg-purple/10 px-5 py-3 text-base font-semibold text-purple transition hover:bg-purple/15;
+    @apply inline-flex items-center justify-center rounded-full border border-purple/30 bg-purple/10 px-5 py-3 text-base font-semibold text-purple transition hover:bg-purple/15 pointer-events-auto;
   }
 
   .rpg-menu-item {
@@ -652,6 +659,7 @@ body {
     transition: border-color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
     cursor: pointer;
     position: relative;
+    pointer-events: auto;
   }
 
   .rpg-menu-item:hover,

@@ -10,7 +10,7 @@ interface NavbarProps {
 
 export function Navbar({ theme, onToggleTheme }: NavbarProps) {
   return (
-    <header className="sticky top-0 z-30 border-b border-retro bg-retro-panel">
+    <header className="sticky top-0 z-40 border-b border-retro bg-retro-panel">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 py-3 sm:py-4 lg:px-8 gap-2 sm:gap-4">
         <a href="#home" className="text-xs sm:text-base font-semibold uppercase tracking-[0.24em] sm:tracking-[0.34em] text-retro">
           Aryan Qureshi

@@ -84,13 +84,8 @@ export function HeroSection({ menuOptions, onSelect, isPanelOpen, onClosePanel }
   }, [isPanelOpen, selectedIndex]);
 
   return (
-    <section id="home" className="relative overflow-hidden rpg-panel px-6 py-0 sm:px-8 sm:py-0">
-      <div className="rpg-panel-corners">
-        <div className="rpg-corner rpg-corner-tl" />
-        <div className="rpg-corner rpg-corner-tr" />
-        <div className="rpg-corner rpg-corner-bl" />
-        <div className="rpg-corner rpg-corner-br" />
-      </div>
+    <section id="home" className="relative px-6 sm:px-8 py-12 sm:py-16">
+      {/* Decorative background layers - no interaction */}
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-purple/10 via-transparent to-transparent opacity-80" />
       <div className="pointer-events-none absolute left-6 top-10 h-24 w-24 rounded-full border border-purple/15 blur-2xl opacity-80" />
       <div className="pointer-events-none absolute right-10 top-24 h-28 w-28 rounded-full border border-purple/10 opacity-60" />
@@ -195,8 +190,6 @@ export function HeroSection({ menuOptions, onSelect, isPanelOpen, onClosePanel }
           </motion.div>
         </div>
       </div>
-      <div className="rpg-scanlines" />
-      <div className="rpg-particles" />
     </section>
   );
 }
