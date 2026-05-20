@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { profile } from '../data/profile';
-import { socials } from '../data/socials';
+import { GlitchName } from './GlitchName';
 import { PixelPortrait } from './PixelPortrait';
 
 interface MenuOption {
@@ -126,9 +126,10 @@ export function HeroSection({ menuOptions, onSelect, isPanelOpen, onClosePanel }
             <div className="flex flex-col gap-4 sm:gap-6 border-b border-retro pb-4 sm:pb-6">
               <div>
                 <p className="text-xs sm:text-sm uppercase tracking-[0.3em] text-purple/80">Character Profile</p>
-                <h1 className="retro-heading mt-4 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-[0.08em] text-retro">
-                  Aryan Qureshi
-                </h1>
+                <GlitchName
+                  name={profile.name}
+                  className="retro-heading mt-4 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-[0.08em] text-retro"
+                />
                 <p className="mt-3 text-xs sm:text-base uppercase tracking-[0.28em] text-purple/80 sm:text-lg">{profile.title}</p>
               </div>
               <div className="grid gap-4 grid-cols-1 sm:grid-cols-2">

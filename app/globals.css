@@ -844,3 +844,316 @@ body {
     100% { background-position: 120px 80px; }
   }
 }
+
+/* ============================================================
+   RETRO GLOW-UP — CRT, GLITCH, CURSOR, HOVER EFFECTS
+   ============================================================ */
+
+/* --- CRT Grid background --- */
+.crt-grid {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  background-image:
+    linear-gradient(rgba(159, 122, 234, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(159, 122, 234, 0.025) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* --- Drifting star field --- */
+.star-field {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 2;
+  overflow: hidden;
+}
+
+.star-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.star-layer-1 {
+  background:
+    radial-gradient(circle, rgba(255, 255, 255, 0.55) 1px, transparent 1px),
+    radial-gradient(circle, rgba(255, 255, 255, 0.3) 1px, transparent 1px);
+  background-size: 110px 90px, 70px 100px;
+  background-position: 18px 22px, 55px 50px;
+  opacity: 0.35;
+}
+
+.star-layer-2 {
+  background: radial-gradient(circle, rgba(159, 122, 234, 0.45) 1px, transparent 1px);
+  background-size: 150px 120px;
+  background-position: 75px 35px;
+  opacity: 0.2;
+}
+
+/* --- CRT vignette --- */
+.crt-vignette {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9996;
+  background: radial-gradient(ellipse at 50% 50%, transparent 52%, rgba(0, 0, 0, 0.72) 100%);
+}
+
+/* --- CRT screen flicker --- */
+@keyframes crt-screen-flicker {
+  0%, 100%  { opacity: 1; }
+  93%       { opacity: 1; }
+  93.5%     { opacity: 0.80; }
+  94%       { opacity: 1; }
+  94.8%     { opacity: 0.86; }
+  95%       { opacity: 1; }
+}
+
+.crt-flicker-overlay {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9995;
+  background: transparent;
+}
+
+/* --- Glitch / RGB-split keyframes --- */
+@keyframes glitch-clip-1 {
+  0%   { clip-path: inset(82% 0 2% 0);  transform: translate(-3px, 0); }
+  20%  { clip-path: inset(4% 0 76% 0);  transform: translate(3px, 0);  }
+  40%  { clip-path: inset(48% 0 36% 0); transform: translate(-3px, 0); }
+  60%  { clip-path: inset(12% 0 72% 0); transform: translate(3px, 0);  }
+  80%  { clip-path: inset(32% 0 52% 0); transform: translate(-2px, 0); }
+  100% { clip-path: inset(0 0 100% 0);  transform: translate(0, 0);    }
+}
+
+@keyframes glitch-clip-2 {
+  0%   { clip-path: inset(4% 0 80% 0);  transform: translate(3px, 0);  }
+  20%  { clip-path: inset(78% 0 6% 0);  transform: translate(-3px, 0); }
+  40%  { clip-path: inset(28% 0 56% 0); transform: translate(3px, 0);  }
+  60%  { clip-path: inset(68% 0 14% 0); transform: translate(-3px, 0); }
+  80%  { clip-path: inset(44% 0 38% 0); transform: translate(2px, 0);  }
+  100% { clip-path: inset(100% 0 0 0);  transform: translate(0, 0);    }
+}
+
+/* --- Neon name glow pulse --- */
+@keyframes neon-pulse {
+  0%, 100% {
+    text-shadow:
+      0 0 6px  rgba(159, 122, 234, 0.65),
+      0 0 18px rgba(159, 122, 234, 0.35),
+      0 0 38px rgba(159, 122, 234, 0.15);
+  }
+  50% {
+    text-shadow:
+      0 0 12px rgba(159, 122, 234, 1),
+      0 0 28px rgba(159, 122, 234, 0.6),
+      0 0 56px rgba(159, 122, 234, 0.3),
+      0 0 80px rgba(159, 122, 234, 0.12);
+  }
+}
+
+/* --- Typewriter cursor blink --- */
+@keyframes block-cursor-blink {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0; }
+}
+
+.cursor-blink {
+  display: inline-block;
+  color: #9f7aea;
+  margin-left: 2px;
+  font-size: 0.85em;
+  vertical-align: baseline;
+  animation: block-cursor-blink 0.8s step-end infinite;
+}
+
+/* --- GlitchName wrapper / states --- */
+.glitch-name-wrapper {
+  display: block;
+}
+
+.glitch-boot-bar {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.45rem;
+  letter-spacing: 0.12em;
+  color: rgba(159, 122, 234, 0.7);
+  margin-bottom: 0.6rem;
+  min-height: 1.2rem;
+  transition: opacity 0.3s ease;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.glitch-boot-label { color: rgba(159, 122, 234, 0.55); }
+.glitch-boot-progress { color: #9f7aea; letter-spacing: 0.05em; }
+.glitch-boot-pct { color: rgba(159, 122, 234, 0.7); }
+
+.name-glitch {
+  position: relative;
+  display: block;
+  animation: neon-pulse 3.5s ease-in-out infinite;
+}
+
+/* Glitch pseudo-layers — only when .is-glitching is applied */
+.name-glitch::before,
+.name-glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.name-glitch.is-glitching::before {
+  opacity: 1;
+  color: #00ffff;
+  text-shadow: -2px 0 #ff00ff;
+  left: -2px;
+  animation: glitch-clip-1 0.22s steps(3) both;
+}
+
+.name-glitch.is-glitching::after {
+  opacity: 1;
+  color: #ff00ff;
+  text-shadow: 2px 0 #00ffff;
+  left: 2px;
+  animation: glitch-clip-2 0.22s steps(3) both;
+}
+
+/* --- Pixel hover shake --- */
+@keyframes pixel-shake {
+  0%, 100% { transform: translate(0, 0);      }
+  20%      { transform: translate(-2px, 1px); }
+  40%      { transform: translate(2px, -1px); }
+  60%      { transform: translate(-1px, 2px); }
+  80%      { transform: translate(1px, -1px); }
+}
+
+/* --- Click flash --- */
+@keyframes click-flash {
+  0%   { box-shadow: inset 0 0 0 200px rgba(255, 0, 255, 0.22); }
+  100% { box-shadow: inset 0 0 0 200px rgba(255, 0, 255, 0);    }
+}
+
+.is-clicking {
+  animation: click-flash 0.14s ease-out both !important;
+}
+
+/* --- Cursor trail dots --- */
+.cursor-trail-dot {
+  position: fixed;
+  width: 4px;
+  height: 4px;
+  background: #9f7aea;
+  border-radius: 1px;
+  pointer-events: none;
+  z-index: 10001;
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 0.75;
+  box-shadow: 0 0 5px rgba(159, 122, 234, 0.7);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.cursor-trail-dot.fading {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0);
+}
+
+/* --- Mute toggle button (fixed bottom-right) --- */
+.mute-toggle {
+  position: fixed;
+  bottom: 1.25rem;
+  right: 1.25rem;
+  z-index: 9994;
+  font-size: 1rem;
+  line-height: 1;
+  background: rgba(10, 8, 17, 0.85);
+  border: 1px solid rgba(159, 122, 234, 0.3);
+  color: rgba(159, 122, 234, 0.8);
+  padding: 0.4rem 0.55rem;
+  cursor: pointer;
+  border-radius: 0.35rem;
+  backdrop-filter: blur(4px);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.mute-toggle:hover {
+  border-color: rgba(159, 122, 234, 0.65);
+  box-shadow: 0 0 10px rgba(159, 122, 234, 0.3);
+}
+
+/* --- Avatar glow (applied via class on PixelPortrait wrapper) --- */
+.avatar-glow {
+  filter:
+    drop-shadow(0 0 10px rgba(159, 122, 234, 0.5))
+    drop-shadow(0 0 24px rgba(159, 122, 234, 0.2));
+}
+
+/* --- Enhanced button/card hover: glow + shake + pixel corner accent --- */
+@media (hover: hover) {
+  .rpg-button:hover,
+  .rpg-secondary-button:hover,
+  .rpg-menu-item:hover,
+  .rpg-card-interactive:hover,
+  .rpg-stats-button:hover {
+    animation: pixel-shake 0.16s ease both;
+    box-shadow:
+      0 0 0 1px rgba(159, 122, 234, 0.4),
+      0 0 14px rgba(159, 122, 234, 0.3),
+      inset 0 0 8px rgba(159, 122, 234, 0.08);
+  }
+}
+
+/* --- Blocky section reveal (used on RPGPanel scrollable content) --- */
+@keyframes block-reveal-in {
+  0%   { clip-path: inset(0 100% 0 0); }
+  20%  { clip-path: inset(0 80% 0 0);  }
+  40%  { clip-path: inset(0 60% 0 0);  }
+  60%  { clip-path: inset(0 40% 0 0);  }
+  80%  { clip-path: inset(0 20% 0 0);  }
+  100% { clip-path: inset(0 0% 0 0);   }
+}
+
+.section-block-reveal {
+  animation: block-reveal-in 0.55s steps(5) both;
+}
+
+/* ============================================================
+   PREFERS-REDUCED-MOTION — disable all non-essential motion
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  .name-glitch            { animation: none !important; }
+  .name-glitch::before,
+  .name-glitch::after     { display: none !important; }
+  .cursor-blink           { animation: none !important; opacity: 1; }
+  .crt-flicker-overlay    { animation: none !important; }
+  .star-layer-1,
+  .star-layer-2           { animation: none !important; }
+  .pixel-float            { animation: none !important; }
+  .rpg-stats-arrow        { animation: none !important; }
+  .cursor-trail-dot       { display: none !important; }
+  .section-block-reveal   { animation: none !important; clip-path: none !important; }
+  .hero-portrait-grid     { animation: none !important; }
+}
+
+/* ============================================================
+   MOBILE — reduce intensity on touch devices
+   ============================================================ */
+@media (max-width: 768px) {
+  .crt-vignette { opacity: 0.6; }
+  .star-layer-1 { opacity: 0.18; }
+  .star-layer-2 { opacity: 0.1; }
+  .glitch-boot-bar { font-size: 0.38rem; }
+}
+
+@media (hover: none) {
+  /* No cursor trail on touch — handled in JS, but belt-and-suspenders */
+  .cursor-trail-dot { display: none !important; }
+}
