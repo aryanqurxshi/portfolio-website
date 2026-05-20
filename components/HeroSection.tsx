@@ -1,97 +1,36 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
+import { SiGithub } from 'react-icons/si';
+import { FaLinkedinIn } from 'react-icons/fa';
+import { MdEmail } from 'react-icons/md';
+import { HiDocumentText } from 'react-icons/hi';
 import { profile } from '../data/profile';
+import { socials } from '../data/socials';
 import { GlitchName } from './GlitchName';
 import { PixelPortrait } from './PixelPortrait';
 
-interface MenuOption {
-  key: string;
-  label: string;
-  description: string;
-  icon: string;
-}
+const ANCHOR_ITEMS = [
+  { label: 'QUESTS',      href: '#quests'    },
+  { label: 'INVENTORY',   href: '#inventory' },
+  { label: 'TROPHIES',    href: '#trophies'  },
+  { label: 'SKILLS',      href: '#skills'    },
+  { label: 'BONUS LEVEL', href: '#bonus'     },
+  { label: 'CONTACT',     href: '#contact'   },
+] as const;
 
-interface HeroSectionProps {
-  menuOptions: readonly MenuOption[];
-  onSelect: (key: string) => void;
-  isPanelOpen: boolean;
-  onClosePanel: () => void;
-}
-
-export function HeroSection({ menuOptions, onSelect, isPanelOpen, onClosePanel }: HeroSectionProps) {
-  const [selectedIndex, setSelectedIndex] = useState(0);
-  const menuRef = useRef<HTMLDivElement | null>(null);
-  const itemRefs = useRef<Array<HTMLButtonElement | null>>([]);
-  const [isDesktop, setIsDesktop] = useState(false);
-
-  useEffect(() => {
-    const query = window.matchMedia('(pointer: fine) and (hover: hover)');
-
-    const updateDesktop = () => setIsDesktop(query.matches);
-    updateDesktop();
-    query.addEventListener('change', updateDesktop);
-
-    return () => query.removeEventListener('change', updateDesktop);
-  }, []);
-
-  useEffect(() => {
-    if (!isDesktop) return;
-
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (isPanelOpen) {
-        if (event.key === 'Escape') {
-          event.preventDefault();
-          onClosePanel();
-        }
-        return;
-      }
-
-      if (!menuRef.current?.contains(event.target as Node)) {
-        return;
-      }
-
-      if (event.key === 'ArrowDown') {
-        event.preventDefault();
-        setSelectedIndex((current) => (current + 1) % menuOptions.length);
-      }
-
-      if (event.key === 'ArrowUp') {
-        event.preventDefault();
-        setSelectedIndex((current) => (current - 1 + menuOptions.length) % menuOptions.length);
-      }
-
-      if (event.key === 'Enter') {
-        event.preventDefault();
-        onSelect(menuOptions[selectedIndex].key);
-      }
-
-      if (event.key === 'Escape') {
-        event.preventDefault();
-        menuRef.current?.querySelector<HTMLButtonElement>('button')?.focus();
-      }
-    };
-
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [isDesktop, isPanelOpen, menuOptions, onClosePanel, onSelect, selectedIndex]);
-
-  useEffect(() => {
-    if (!isPanelOpen) {
-      itemRefs.current[selectedIndex]?.focus({ preventScroll: true });
-    }
-  }, [isPanelOpen, selectedIndex]);
-
+export function HeroSection() {
   return (
-    <section id="home" className="relative px-6 sm:px-8 py-12 sm:py-16">
-      {/* Decorative background layers - no interaction */}
+    <section id="status" className="relative px-6 sm:px-8 py-12 sm:py-16 scroll-mt-16">
+      {/* Decorative background layers */}
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-purple/10 via-transparent to-transparent opacity-80" />
       <div className="pointer-events-none absolute left-6 top-10 h-24 w-24 rounded-full border border-purple/15 blur-2xl opacity-80" />
       <div className="pointer-events-none absolute right-10 top-24 h-28 w-28 rounded-full border border-purple/10 opacity-60" />
       <div className="pointer-events-none absolute left-0 bottom-8 h-16 w-16 rounded-full bg-purple/10 blur-sm opacity-90" />
       <div className="pointer-events-none absolute right-0 bottom-20 h-20 w-20 rounded-full bg-white/5 blur-sm" />
+
       <div className="relative grid gap-8 grid-cols-1 lg:grid-cols-[0.95fr_1.05fr]">
+        {/* ── Left: Character Portrait ── */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
@@ -116,80 +55,76 @@ export function HeroSection({ menuOptions, onSelect, isPanelOpen, onClosePanel }
           </div>
         </motion.div>
 
-        <div className="space-y-6">
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: 'easeOut' }}
-            className="rpg-panel p-4 sm:p-6"
-          >
-            <div className="flex flex-col gap-4 sm:gap-6 border-b border-retro pb-4 sm:pb-6">
-              <div>
-                <p className="text-xs sm:text-sm uppercase tracking-[0.3em] text-purple/80">Character Profile</p>
-                <GlitchName
-                  name={profile.name}
-                  className="retro-heading mt-4 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-[0.08em] text-retro"
-                />
-                <p className="mt-3 text-xs sm:text-base uppercase tracking-[0.28em] text-purple/80 sm:text-lg">{profile.title}</p>
-              </div>
-              <div className="grid gap-4 grid-cols-1 sm:grid-cols-2">
-                <div className="rounded-[1.75rem] border border-retro bg-retro-surface p-4">
-                  <p className="text-xs sm:text-sm uppercase tracking-[0.28em] text-purple/80">Location</p>
-                  <p className="mt-2 text-base sm:text-lg font-semibold text-retro">Ottawa, Canada</p>
-                </div>
-                <div className="rounded-[1.75rem] border border-retro bg-retro-surface p-4">
-                  <p className="text-xs sm:text-sm uppercase tracking-[0.28em] text-purple/80">School</p>
-                  <p className="mt-2 text-base sm:text-lg font-semibold text-retro">University of Ottawa</p>
-                </div>
-              </div>
-            </div>
-            <div className="mt-6 rounded-[1.75rem] border border-retro bg-retro-surface p-4 sm:p-5">
-              <p className="text-xs sm:text-sm uppercase tracking-[0.28em] text-purple/80">About</p>
-              <p className="mt-3 text-sm sm:text-base leading-7 sm:leading-8 text-gray-300">{profile.intro}</p>
-            </div>
-          </motion.div>
+        {/* ── Right: Character Profile ── */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease: 'easeOut' }}
+          className="rpg-panel p-4 sm:p-6 space-y-4 sm:space-y-6"
+        >
+          {/* Name + title */}
+          <div className="border-b border-retro pb-4 sm:pb-5">
+            <p className="text-xs sm:text-sm uppercase tracking-[0.3em] text-purple/80">Character Profile</p>
+            {/* SACRED — typewriter glitch lives inside GlitchName, do not change */}
+            <GlitchName
+              name={profile.name}
+              className="retro-heading mt-4 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-[0.08em] text-retro"
+            />
+            <p className="mt-3 text-xs sm:text-base uppercase tracking-[0.28em] text-purple/80 sm:text-lg">{profile.title}</p>
+          </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.75, delay: 0.08, ease: 'easeOut' }}
-            className="rpg-panel p-4 sm:p-6"
-          >
-            <div className="mb-4 flex items-center justify-between">
-              <p className="text-xs sm:text-sm uppercase tracking-[0.28em] text-purple/80">Command Menu</p>
-              <span className="rpg-menu-pointer">▶</span>
+          {/* Location + school */}
+          <div className="grid gap-3 grid-cols-1 sm:grid-cols-2">
+            <div className="rounded-[1.75rem] border border-retro bg-retro-surface p-4">
+              <p className="text-xs uppercase tracking-[0.28em] text-purple/80">Location</p>
+              <p className="mt-1.5 text-base sm:text-lg font-semibold text-retro">Ottawa, Canada</p>
             </div>
-            <div ref={menuRef} className="grid gap-3" role="menu" aria-orientation="vertical" aria-label="Portfolio menu">
-              {menuOptions.map((option, index) => {
-                const isActive = selectedIndex === index;
-                return (
-                  <button
-                    key={option.key}
-                    ref={(element) => {
-                      itemRefs.current[index] = element;
-                    }}
-                    type="button"
-                    onClick={() => onSelect(option.key)}
-                    onFocus={() => setSelectedIndex(index)}
-                    className={`rpg-menu-item ${isActive ? 'rpg-menu-item-active' : ''}`}
-                    role="menuitem"
-                    aria-selected={isActive}
-                    aria-current={isActive ? 'page' : undefined}
-                  >
-                    <div className="space-y-1">
-                      <p className="rpg-menu-label">
-                        {isActive && <span className="rpg-menu-pointer">▶</span>}
-                        {option.label}
-                      </p>
-                      <p className="max-w-xl rpg-menu-description">{option.description}</p>
-                    </div>
-                    <span className="rpg-menu-icon">{option.icon}</span>
-                  </button>
-                );
-              })}
+            <div className="rounded-[1.75rem] border border-retro bg-retro-surface p-4">
+              <p className="text-xs uppercase tracking-[0.28em] text-purple/80">School</p>
+              <p className="mt-1.5 text-base sm:text-lg font-semibold text-retro">University of Ottawa</p>
             </div>
-          </motion.div>
-        </div>
+          </div>
+
+          {/* About + bio */}
+          <div className="rounded-[1.75rem] border border-retro bg-retro-surface p-4 sm:p-5 space-y-2">
+            <p className="text-xs uppercase tracking-[0.28em] text-purple/80">About</p>
+            <p className="text-sm sm:text-base leading-7 text-gray-300">
+              Passionate about building innovative tech — especially applying engineering and AI to solve real-world problems and create impactful products.
+            </p>
+          </div>
+
+          {/* Contact icons line */}
+          <div className="hero-contact-line">
+            <a href={`mailto:${socials.email}`} className="hero-contact-link" aria-label="Email">
+              <MdEmail className="pixel-icon" size={16} />
+              <span>email</span>
+            </a>
+            <span className="text-purple/30 hidden sm:inline">·</span>
+            <a href={socials.github} target="_blank" rel="noopener noreferrer" className="hero-contact-link" aria-label="GitHub">
+              <SiGithub className="pixel-icon" size={14} />
+              <span>GitHub</span>
+            </a>
+            <span className="text-purple/30 hidden sm:inline">·</span>
+            <a href={socials.linkedin} target="_blank" rel="noopener noreferrer" className="hero-contact-link" aria-label="LinkedIn">
+              <FaLinkedinIn className="pixel-icon" size={14} />
+              <span>LinkedIn</span>
+            </a>
+            <span className="text-purple/30 hidden sm:inline">·</span>
+            <a href={socials.resume} target="_blank" rel="noopener noreferrer" className="hero-contact-link" aria-label="Resume PDF">
+              <HiDocumentText className="pixel-icon" size={16} />
+              <span>resume.pdf</span>
+            </a>
+          </div>
+
+          {/* Horizontal anchor nav */}
+          <nav aria-label="Page sections" className="anchor-nav pt-2 border-t border-retro/40">
+            {ANCHOR_ITEMS.map(({ label, href }) => (
+              <a key={href} href={href} className="anchor-nav-item">
+                {label}
+              </a>
+            ))}
+          </nav>
+        </motion.div>
       </div>
     </section>
   );
