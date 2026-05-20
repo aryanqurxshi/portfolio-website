@@ -1157,3 +1157,645 @@ body {
   /* No cursor trail on touch — handled in JS, but belt-and-suspenders */
   .cursor-trail-dot { display: none !important; }
 }
+
+/* ============================================================
+   PORTFOLIO V2 — CHARACTER SHEET SECTIONS
+   ============================================================ */
+
+/* --- Section shell --- */
+.rpg-section {
+  position: relative;
+  padding: 2.5rem 0;
+}
+
+.rpg-section-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.rpg-section-title {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  color: #9f7aea;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.rpg-section-divider {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(159, 122, 234, 0.45), transparent);
+}
+
+/* --- Anchor nav (hero bottom strip) --- */
+.anchor-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.5rem;
+}
+
+.anchor-nav-item {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.45rem;
+  letter-spacing: 0.08em;
+  padding: 0.35rem 0.6rem;
+  border: 1px solid rgba(159, 122, 234, 0.3);
+  color: rgba(159, 122, 234, 0.75);
+  text-decoration: none;
+  background: transparent;
+  transition: border-color 0.15s, color 0.15s, background 0.15s, box-shadow 0.15s;
+  cursor: pointer;
+}
+
+.anchor-nav-item:hover,
+.anchor-nav-item.active {
+  border-color: #9f7aea;
+  color: #f7f3ff;
+  background: rgba(159, 122, 234, 0.12);
+  box-shadow: 0 0 6px rgba(159, 122, 234, 0.3);
+}
+
+/* --- Hero contact line --- */
+.hero-contact-line {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.9rem;
+  align-items: center;
+}
+
+.hero-contact-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: 'VT323', monospace;
+  font-size: 1.05rem;
+  color: rgba(159, 122, 234, 0.8);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.hero-contact-link:hover {
+  color: #f7f3ff;
+}
+
+/* --- Quest / inventory entries --- */
+.quest-entry {
+  padding: 0.9rem 0;
+}
+
+.quest-role {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.5rem;
+  color: #f7f3ff;
+  letter-spacing: 0.06em;
+}
+
+.quest-company {
+  font-family: 'VT323', monospace;
+  font-size: 1.15rem;
+  color: #9f7aea;
+  line-height: 1;
+}
+
+.quest-separator {
+  color: rgba(159, 122, 234, 0.4);
+  font-family: 'VT323', monospace;
+  font-size: 1rem;
+}
+
+.quest-range {
+  font-family: 'VT323', monospace;
+  font-size: 1rem;
+  color: rgba(159, 122, 234, 0.55);
+  white-space: nowrap;
+}
+
+.quest-summary {
+  margin-top: 0.4rem;
+  font-size: 0.85rem;
+  line-height: 1.65;
+  color: #a1a1aa;
+}
+
+.quest-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  margin-top: 0.4rem;
+}
+
+.quest-tag {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.38rem;
+  padding: 0.25rem 0.45rem;
+  border: 1px solid rgba(159, 122, 234, 0.25);
+  color: rgba(159, 122, 234, 0.65);
+  letter-spacing: 0.06em;
+}
+
+/* --- Inventory specifics --- */
+.inventory-title {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.5rem;
+  color: #c4b5fd;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.inventory-title:hover {
+  color: #f7f3ff;
+}
+
+.inventory-action {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.4rem;
+  padding: 0.2rem 0.5rem;
+  border: 1px solid rgba(159, 122, 234, 0.35);
+  color: rgba(159, 122, 234, 0.75);
+  text-decoration: none;
+  letter-spacing: 0.06em;
+  transition: all 0.15s;
+}
+
+.inventory-action:hover {
+  border-color: #9f7aea;
+  color: #f7f3ff;
+  box-shadow: 0 0 5px rgba(159, 122, 234, 0.3);
+}
+
+.inventory-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  margin-top: 0.45rem;
+}
+
+.inventory-tech-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.38rem;
+  padding: 0.2rem 0.45rem;
+  border: 1px solid rgba(159, 122, 234, 0.2);
+  color: rgba(159, 122, 234, 0.6);
+  letter-spacing: 0.04em;
+}
+
+/* --- Skills stat bars --- */
+.skill-row {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.65rem 0;
+}
+
+.skill-name {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.45rem;
+  color: #c8bef4;
+  letter-spacing: 0.05em;
+  min-width: 90px;
+}
+
+.skill-bar-text {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.5rem;
+  color: #9f7aea;
+  letter-spacing: 0.03em;
+  flex: 1;
+}
+
+.skill-level {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.4rem;
+  color: rgba(159, 122, 234, 0.6);
+  min-width: 32px;
+  text-align: right;
+}
+
+/* --- Contact link cards --- */
+.contact-link-card {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.85rem 1rem;
+  border: 1px solid rgba(159, 122, 234, 0.25);
+  background: rgba(255, 255, 255, 0.03);
+  text-decoration: none;
+  transition: border-color 0.15s, background 0.15s, box-shadow 0.15s;
+  color: inherit;
+}
+
+.contact-link-card:hover {
+  border-color: rgba(159, 122, 234, 0.55);
+  background: rgba(159, 122, 234, 0.08);
+  box-shadow: 0 0 8px rgba(159, 122, 234, 0.2);
+}
+
+.contact-link-label {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.42rem;
+  color: rgba(159, 122, 234, 0.7);
+  letter-spacing: 0.1em;
+}
+
+.contact-link-value {
+  margin-top: 0.25rem;
+  font-family: 'VT323', monospace;
+  font-size: 1.05rem;
+  color: #f7f3ff;
+}
+
+/* --- Bonus level subhead --- */
+.bonus-subhead {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.45rem;
+  color: rgba(159, 122, 234, 0.5);
+  letter-spacing: 0.1em;
+}
+
+/* ============================================================
+   BOSS BATTLE MINI-GAME
+   ============================================================ */
+
+.battle-container {
+  border: 2px solid rgba(159, 122, 234, 0.4);
+  background: #050507;
+  padding: 1.25rem;
+  font-family: 'VT323', monospace;
+  max-width: 520px;
+}
+
+.battle-start-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.5rem 0;
+}
+
+.battle-flavor {
+  font-size: 1.1rem;
+  color: #f7f3ff;
+}
+
+.battle-wins-counter {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.4rem;
+  color: rgba(159, 122, 234, 0.6);
+  letter-spacing: 0.1em;
+}
+
+.battle-start-btn {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.5rem;
+  padding: 0.6rem 1rem;
+  border: 2px solid rgba(159, 122, 234, 0.5);
+  background: rgba(159, 122, 234, 0.08);
+  color: #9f7aea;
+  cursor: pointer;
+  letter-spacing: 0.1em;
+  transition: all 0.15s;
+  margin-top: 0.25rem;
+}
+
+.battle-start-btn:hover {
+  border-color: #9f7aea;
+  background: rgba(159, 122, 234, 0.18);
+  box-shadow: 0 0 10px rgba(159, 122, 234, 0.35);
+  color: #f7f3ff;
+}
+
+.battle-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.battle-enemy-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.battle-player-row {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+  gap: 0.75rem;
+}
+
+.battle-combatant-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.battle-name {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.45rem;
+  color: #f7f3ff;
+  letter-spacing: 0.08em;
+}
+
+.battle-hp-bar {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.42rem;
+  letter-spacing: 0.02em;
+}
+
+.battle-buff-indicator {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.38rem;
+  color: #fbbf24;
+  letter-spacing: 0.06em;
+  animation: neon-pulse 1s ease-in-out infinite;
+}
+
+.battle-textbox {
+  border: 2px solid rgba(159, 122, 234, 0.35);
+  padding: 0.65rem 0.85rem;
+  min-height: 4.5rem;
+  max-height: 4.5rem;
+  overflow-y: auto;
+  background: rgba(0, 0, 0, 0.4);
+  font-size: 1.05rem;
+  color: #f7f3ff;
+  line-height: 1.55;
+  scrollbar-width: none;
+}
+
+.battle-textbox::-webkit-scrollbar { display: none; }
+
+.battle-log-line {
+  display: block;
+}
+
+.battle-moves {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.4rem;
+}
+
+.battle-move-btn {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.42rem;
+  padding: 0.55rem 0.6rem;
+  border: 1px solid rgba(159, 122, 234, 0.35);
+  background: rgba(159, 122, 234, 0.04);
+  color: #c8bef4;
+  cursor: pointer;
+  text-align: left;
+  letter-spacing: 0.04em;
+  transition: all 0.1s;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.battle-move-btn:hover:not(:disabled) {
+  border-color: #9f7aea;
+  background: rgba(159, 122, 234, 0.14);
+  color: #f7f3ff;
+}
+
+.battle-move-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.battle-move-hint {
+  font-size: 0.35rem;
+  color: rgba(159, 122, 234, 0.5);
+  font-family: 'Press Start 2P', monospace;
+}
+
+.battle-waiting {
+  font-size: 1rem;
+  color: rgba(159, 122, 234, 0.7);
+  padding: 0.4rem 0;
+}
+
+.battle-end {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding: 0.25rem 0;
+}
+
+.battle-victory-text {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.45rem;
+  color: #a78bfa;
+  letter-spacing: 0.08em;
+}
+
+.battle-defeat-text {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.42rem;
+  color: #f87171;
+  letter-spacing: 0.06em;
+}
+
+/* Enemy sprite animations */
+.enemy-sprite {
+  filter: drop-shadow(0 0 6px rgba(159, 122, 234, 0.5));
+}
+
+@keyframes sprite-shake-anim {
+  0%, 100% { transform: translate(0, 0);     }
+  25%      { transform: translate(-3px, 1px); }
+  50%      { transform: translate(3px, -1px); }
+  75%      { transform: translate(-2px, 2px); }
+}
+
+.sprite-shake {
+  animation: sprite-shake-anim 0.3s ease both;
+}
+
+/* Icon utilities */
+.pixel-icon {
+  image-rendering: pixelated;
+  filter: drop-shadow(0 0 2px rgba(159, 122, 234, 0.35));
+  flex-shrink: 0;
+}
+
+.pixel-icon-link {
+  display: inline-flex;
+  align-items: center;
+}
+
+/* ============================================================
+   POLISH COMPONENTS
+   ============================================================ */
+
+/* Boot overlay */
+.boot-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: #050507;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.boot-title {
+  font-family: 'Press Start 2P', monospace;
+}
+
+.boot-subtitle {
+  font-family: 'Press Start 2P', monospace;
+}
+
+.boot-bar-text {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.5rem;
+  letter-spacing: 0.04em;
+  color: #9f7aea;
+}
+
+/* FPS counter */
+.fps-counter {
+  position: fixed;
+  top: 3.5rem;
+  right: 1.25rem;
+  z-index: 100;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.38rem;
+  color: rgba(159, 122, 234, 0.3);
+  pointer-events: none;
+  letter-spacing: 0.06em;
+}
+
+/* Keyboard shortcuts overlay */
+.shortcuts-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99998;
+  background: rgba(0, 0, 0, 0.88);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.shortcuts-panel {
+  border: 2px solid rgba(159, 122, 234, 0.5);
+  padding: 1.75rem;
+  background: #050507;
+  max-width: 420px;
+  width: 90%;
+  box-shadow: 0 0 30px rgba(159, 122, 234, 0.2);
+}
+
+.shortcuts-title {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.55rem;
+  color: #9f7aea;
+  letter-spacing: 0.14em;
+  margin-bottom: 0.5rem;
+}
+
+.shortcuts-subtitle {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.38rem;
+  color: rgba(159, 122, 234, 0.45);
+  margin-bottom: 1rem;
+}
+
+.shortcuts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border-top: 1px solid rgba(159, 122, 234, 0.15);
+}
+
+.shortcut-row {
+  display: flex;
+  gap: 0.75rem;
+  padding: 0.45rem 0;
+  border-bottom: 1px solid rgba(159, 122, 234, 0.1);
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.4rem;
+  color: #c8bef4;
+  letter-spacing: 0.05em;
+}
+
+.shortcut-key {
+  color: #9f7aea;
+  min-width: 60px;
+  flex-shrink: 0;
+}
+
+.shortcuts-close-hint {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.35rem;
+  color: rgba(159, 122, 234, 0.35);
+  margin-top: 0.85rem;
+  letter-spacing: 0.06em;
+}
+
+/* Credits scroll */
+@keyframes credits-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.credits-track {
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.credits-content {
+  display: inline-block;
+  animation: credits-scroll 28s linear infinite;
+  font-family: 'VT323', monospace;
+  font-size: 0.9rem;
+  color: rgba(159, 122, 234, 0.4);
+  letter-spacing: 0.14em;
+}
+
+/* ============================================================
+   KONAMI / TERMINAL MODE
+   ============================================================ */
+html.terminal-mode {
+  --bg:         #001400;
+  --panel:      #001a00;
+  --panel-soft: #002000;
+  --text:       #00ff41;
+  --muted:      #00b32a;
+  --border:     rgba(0, 255, 65, 0.22);
+}
+
+html.terminal-mode .crt-grid {
+  background-image:
+    linear-gradient(rgba(0, 255, 65, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 65, 0.025) 1px, transparent 1px);
+}
+
+html.terminal-mode .star-layer-1,
+html.terminal-mode .star-layer-2 {
+  background-color: transparent;
+  background-image: radial-gradient(circle, rgba(0, 255, 65, 0.4) 1px, transparent 1px);
+}
+
+html.terminal-mode .name-glitch {
+  text-shadow: 0 0 8px rgba(0, 255, 65, 0.7), 0 0 20px rgba(0, 255, 65, 0.4) !important;
+}
+
+/* ============================================================
+   PREFERS-REDUCED-MOTION ADDITIONS (v2)
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  .credits-content  { animation: none !important; }
+  .sprite-shake     { animation: none !important; }
+  .battle-buff-indicator { animation: none !important; }
+}
