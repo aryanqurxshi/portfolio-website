@@ -75,7 +75,7 @@ export function RPGPanel({ title, subtitle, isOpen, onClose, children }: RPGPane
                 </button>
               </div>
             </div>
-            <div className="flex-1 min-h-0 overflow-y-auto px-6 sm:px-8 py-6 sm:py-8">
+            <div className="section-block-reveal flex-1 min-h-0 overflow-y-auto px-6 sm:px-8 py-6 sm:py-8">
               {children}
             </div>
           </motion.div>
