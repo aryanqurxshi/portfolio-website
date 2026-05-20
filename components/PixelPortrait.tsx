@@ -7,7 +7,7 @@ export function PixelPortrait() {
   const [hasError, setHasError] = useState(false);
 
   return (
-    <div className="pixel-float hero-portrait-container relative mx-auto h-[240px] w-[240px] overflow-visible bg-transparent p-0 sm:h-[280px] sm:w-[280px] md:h-[320px] md:w-[320px] lg:h-[340px] lg:w-[340px]">
+    <div className="pixel-float avatar-glow hero-portrait-container relative mx-auto h-[240px] w-[240px] overflow-visible bg-transparent p-0 sm:h-[280px] sm:w-[280px] md:h-[320px] md:w-[320px] lg:h-[340px] lg:w-[340px]">
       <div className="hero-portrait-environment" />
       <div className="hero-portrait-shell">
         <div className="hero-portrait-grid" />
