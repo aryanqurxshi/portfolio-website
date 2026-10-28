@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { useMode } from '@/lib/mode';
+import { game, MAX_HEARTS, useGameStats } from '@/lib/game';
 
 interface Coin {
   id: number;
@@ -9,8 +10,6 @@ interface Coin {
   y: number;
   label: string;
 }
-
-const SCORE_KEY = 'game-score';
 
 /**
  * Everything that only exists in game mode: CRT overlay, the HUD, coins that
@@ -20,15 +19,9 @@ export function GameLayer() {
   const mode = useMode();
   const on = mode === 'game';
   const [coins, setCoins] = useState<Coin[]>([]);
-  const [score, setScore] = useState(0);
+  const { score, hearts, level } = useGameStats();
   const [boot, setBoot] = useState(false);
   const seq = useRef(0);
-
-  useEffect(() => {
-    try {
-      setScore(Number(sessionStorage.getItem(SCORE_KEY)) || 0);
-    } catch {}
-  }, []);
 
   // Boot screen when the toggle is flipped on (modechange only fires on a
   // toggle, so reloading in game mode skips it).
@@ -56,13 +49,7 @@ export function GameLayer() {
       const gain = big ? 50 : 10;
       const id = ++seq.current;
       setCoins((c) => [...c.slice(-12), { id, x: e.clientX, y: e.clientY, label: `+${gain}` }]);
-      setScore((s) => {
-        const next = s + gain;
-        try {
-          sessionStorage.setItem(SCORE_KEY, String(next));
-        } catch {}
-        return next;
-      });
+      game.addScore(gain);
       setTimeout(() => setCoins((c) => c.filter((k) => k.id !== id)), 800);
     };
     window.addEventListener('pointerdown', onDown);
@@ -71,24 +58,23 @@ export function GameLayer() {
 
   if (!on) return null;
 
-  const level = 1 + Math.floor(score / 500);
-
   return (
     <>
       <div className="crt pointer-events-none fixed inset-0 z-[80]" aria-hidden="true" />
 
       <div
-        className="pointer-events-none fixed bottom-5 left-1/2 z-[60] flex -translate-x-1/2 items-center gap-4 whitespace-nowrap border-2 border-black bg-[#1c1740] px-4 py-2 font-pixel text-[0.55rem] text-[#eeeaff] shadow-[4px_4px_0_#000] sm:text-[0.6rem] lg:left-[calc(50%+7rem)]"
-        aria-label={`Score ${score}, level ${level}`}
+        className="pointer-events-none fixed left-1/2 top-3 z-[60] flex -translate-x-1/2 items-center gap-4 whitespace-nowrap border-2 border-black bg-[#1c1740] px-4 py-2 font-pixel text-[0.55rem] text-[#eeeaff] shadow-[4px_4px_0_#000] sm:text-[0.6rem] lg:left-[calc(50%+7rem)]"
+        aria-label={`Score ${score}, ${hearts} lives, level ${level}`}
       >
         <span className="hidden text-accent sm:inline">P1 ARYAN</span>
         <span className="text-[#ff4f9a]" aria-hidden="true">
-          ♥♥♥
+          {'♥'.repeat(Math.max(0, hearts))}
+          <span className="text-[#ff4f9a]/30">{'♡'.repeat(Math.max(0, Math.min(MAX_HEARTS, 3) - hearts))}</span>
         </span>
         <span>
           SCORE <span className="text-accent">{String(score).padStart(6, '0')}</span>
         </span>
-        <span className="hidden sm:inline">LVL {level}</span>
+        <span>LVL {level}</span>
       </div>
 
       {coins.map((c) => (

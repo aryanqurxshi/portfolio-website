@@ -251,3 +251,60 @@ body {
 @keyframes boot {
   to { width: 100%; }
 }
+
+/* Corner buddy: waving hand and a hop when clicked */
+.wave {
+  display: inline-block;
+  transform-origin: 70% 80%;
+  animation: wave 2.4s ease-in-out infinite;
+}
+
+@keyframes wave {
+  0%, 60%, 100% { transform: rotate(0deg); }
+  10%, 30% { transform: rotate(16deg); }
+  20%, 40% { transform: rotate(-10deg); }
+}
+
+.buddy-hop {
+  animation: buddy-hop 0.55s cubic-bezier(0.3, 0.7, 0.4, 1);
+}
+
+@keyframes buddy-hop {
+  0% { transform: translateY(0) scale(1, 1); }
+  15% { transform: translateY(0) scale(1.08, 0.9); }
+  45% { transform: translateY(-38%) scale(0.95, 1.06); }
+  80% { transform: translateY(0) scale(1.06, 0.94); }
+  100% { transform: translateY(0) scale(1, 1); }
+}
+
+/* Arcade sprites */
+.coin-spin {
+  animation: coin-spin 0.8s steps(4) infinite;
+}
+
+@keyframes coin-spin {
+  0%, 100% { transform: scaleX(1); }
+  25% { transform: scaleX(0.5); }
+  50% { transform: scaleX(0.15); }
+  75% { transform: scaleX(0.5); }
+}
+
+.walk-bob {
+  animation: walk-bob 0.28s steps(2) infinite;
+}
+
+@keyframes walk-bob {
+  50% { transform: translateY(-3px); }
+}
+
+.hurt-blink {
+  animation: blink 0.16s steps(1) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wave,
+  .coin-spin,
+  .walk-bob {
+    animation: none;
+  }
+}

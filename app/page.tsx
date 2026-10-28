@@ -6,7 +6,8 @@ import { ProjectsSection } from '@/components/ProjectsSection';
 import { AwardsSection, EducationSection } from '@/components/AwardsEducation';
 import { SocialIcons } from '@/components/SocialIcons';
 import { CommandPalette } from '@/components/CommandPalette';
-import { HangingAvatar } from '@/components/HangingAvatar';
+import { Buddy } from '@/components/Buddy';
+import { ArcadeGame } from '@/components/ArcadeGame';
 import { GameLayer } from '@/components/GameLayer';
 import { GameToggle } from '@/components/GameToggle';
 import { profile } from '@/data/profile';
@@ -16,7 +17,8 @@ export default function Home() {
     <div className="min-h-screen lg:pl-56">
       <Sidebar />
       <StickyHeader />
-      <HangingAvatar />
+      <Buddy />
+      <ArcadeGame />
       <GameToggle variant="corner" className="fixed right-5 top-5 z-[46] hidden lg:flex" />
       <CommandPalette />
       <GameLayer />
@@ -31,7 +33,7 @@ export default function Home() {
         <AwardsSection />
         <hr className="border-t border-divider" />
         <EducationSection />
-        <footer className="flex flex-wrap items-center justify-between gap-4 border-t border-divider py-10 pb-24 text-sm text-meta lg:pb-10">
+        <footer className="flex flex-wrap items-center justify-between gap-4 border-t border-divider py-10 pb-32 text-sm text-meta sm:pb-40">
           <p>
             © {new Date().getFullYear()} {profile.name} ·{' '}
             <a href={`mailto:${profile.email}`} className="underline underline-offset-2 hover:text-foreground">
