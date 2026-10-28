@@ -1,20 +1,52 @@
 'use client';
 
 interface ThemeToggleProps {
-  theme: 'dark' | 'light';
-  onToggle: () => void;
+  className?: string;
 }
 
-export function ThemeToggle({ theme, onToggle }: ThemeToggleProps) {
+export function ThemeToggle({ className = '' }: ThemeToggleProps) {
+  const toggle = () => {
+    const root = document.documentElement;
+    const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
+    root.dataset.theme = next;
+    try {
+      localStorage.setItem('theme', next);
+    } catch {}
+  };
+
   return (
     <button
       type="button"
-      onClick={onToggle}
-      aria-pressed={theme === 'light'}
-      className="rpg-button inline-flex gap-2 border-retro bg-retro-panel text-retro focus:ring-purple/50"
+      onClick={toggle}
+      aria-label="Toggle dark mode"
+      className={`shrink-0 cursor-pointer text-foreground transition-opacity hover:opacity-70 ${className}`}
     >
-      <span className="text-base leading-none">{theme === 'dark' ? '🌙' : '🌞'}</span>
-      <span>{theme === 'dark' ? 'Dark' : 'Light'}</span>
+      {/* Both icons render; CSS picks one so there is no hydration mismatch. */}
+      <svg
+        viewBox="0 0 24 24"
+        className="h-5 w-5 dark:hidden"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.75"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        aria-hidden="true"
+      >
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+      </svg>
+      <svg
+        viewBox="0 0 24 24"
+        className="hidden h-5 w-5 dark:block"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.75"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        aria-hidden="true"
+      >
+        <circle cx="12" cy="12" r="4" />
+        <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
+      </svg>
     </button>
   );
 }

@@ -1,27 +1,43 @@
 export interface AwardItem {
-  title: string;
-  organization: string;
+  event: string;
   project: string;
-  category: string;
+  // Slug of a project in data/projects.ts to cross-link to.
+  projectSlug?: string;
+  result: string;
   date: string;
-  location: string;
-  summary: string;
-  description: string;
-  images: string[];
 }
 
 export const awards: AwardItem[] = [
   {
-    title: 'CEED Design Day Winner',
-    organization: 'University of Ottawa',
+    event: 'uOttawa CEED Design Day',
     project: 'EmotiCare',
-    category: 'Childcare Monitoring Systems',
-    date: 'April 2026',
+    projectSlug: 'emoticare',
+    result: 'Winner',
+    date: 'Winter 2026',
+  },
+];
+
+export interface EducationItem {
+  school: string;
+  program: string;
+  range: string;
+  location: string;
+  coursework: string[];
+}
+
+export const education: EducationItem[] = [
+  {
+    school: 'University of Ottawa',
+    program: 'BASc, Electrical Engineering & Management',
+    range: 'Sep 2025 – Jan 2030',
     location: 'Ottawa, ON',
-    summary:
-      'Awarded for winning CEED Design Day at the University of Ottawa for EmotiCare, a childcare monitoring system focused on improving child safety, caregiver awareness, and peace of mind for families.',
-    description:
-      'Our team was recognized for developing a user-centered, impactful solution that combined thoughtful design, innovation, and practical engineering to address a real-world challenge in childcare.',
-    images: [],
+    coursework: [
+      'Circuits',
+      'Digital Systems',
+      'Signals & Systems',
+      'Engineering Design',
+      'Business Management',
+      'Accounting',
+    ],
   },
 ];
