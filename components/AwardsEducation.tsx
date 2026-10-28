@@ -1,5 +1,6 @@
 import { awards, education } from '@/data/awards';
 import { Logo } from './Logo';
+import { UOttawaMark } from './UOttawaMark';
 
 export function AwardsSection() {
   return (
@@ -11,7 +12,10 @@ export function AwardsSection() {
         {awards.map((a) => (
           <li key={`${a.event}-${a.project}`} className="flex items-baseline gap-3 py-3">
             <p className="min-w-0 flex-1">
-              <span>{a.event}</span>
+              <span className="inline-flex items-baseline gap-1.5">
+                <UOttawaMark />
+                {a.event}
+              </span>
               <span className="text-sm text-secondary">
                 {' '}
                 |{' '}
@@ -24,7 +28,7 @@ export function AwardsSection() {
                 )}
               </span>
             </p>
-            <span className="hl hl-on shrink-0 whitespace-nowrap px-1 text-sm font-medium">{a.result}</span>
+            <span data-tone="garnet" className="hl hl-on shrink-0 whitespace-nowrap px-1 text-sm font-medium">{a.result}</span>
             <span className="hidden shrink-0 whitespace-nowrap text-sm text-secondary sm:inline">{a.date}</span>
           </li>
         ))}
@@ -43,7 +47,7 @@ export function EducationSection() {
         {education.map((e) => (
           <li key={e.school} className="py-3">
             <div className="flex items-center gap-3">
-              <Logo name={e.school} />
+              <Logo src="/logos/uottawa.png" name={e.school} />
               <p className="min-w-0 flex-1">
                 <span>{e.program}</span>
                 <span className="text-sm text-secondary"> | {e.school}</span>

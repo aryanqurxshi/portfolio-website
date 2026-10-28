@@ -27,7 +27,7 @@ export const experience: ExperienceGroup[] = [
         company: 'VaultQ',
         range: 'Apr 2026 – Present',
         location: 'Ajax, ON',
-        logo: '/logos/vaultq.png',
+        logo: '/logos/vaultq-mark.png',
         summary:
           'Co-founded VaultQ with a team of 2: a resale inventory platform across three surfaces on one API — a SwiftUI iOS app, a Next.js dashboard, and an Express/TypeScript backend on Postgres.',
         points: [
@@ -45,6 +45,7 @@ export const experience: ExperienceGroup[] = [
         url: 'https://www.instagram.com/palace.to/',
         range: 'Mar 2023 – Present',
         location: 'Ajax, ON',
+        logo: '/logos/palace.svg',
         points: [
           'Scaled a resale brand to $80,000+ in revenue, running sourcing, inventory, pricing, and Instagram-led marketing end to end.',
         ],
@@ -60,6 +61,8 @@ export const experience: ExperienceGroup[] = [
         company: 'The Logistics Alliance',
         range: 'May 2026 – Aug 2026',
         location: 'Mississauga, ON',
+        logo: '/logos/logistics-alliance.png',
+        url: 'https://logisticsalliance.com',
         points: [
           'Built an internal tool that catches incorrect file types at intake and tunes the flagging filter against recurring patterns in rejected paperwork, reducing documents held for missing information.',
           'Reconciled Bills of Lading and Inbound Control Forms against system records and traced pipeline exceptions to root cause before they reached inventory counts.',
@@ -71,6 +74,8 @@ export const experience: ExperienceGroup[] = [
         company: 'The Logistics Alliance',
         range: 'Jul 2025 – Sep 2025',
         location: 'Mississauga, ON',
+        logo: '/logos/logistics-alliance.png',
+        url: 'https://logisticsalliance.com',
         points: [
           "Supported enterprise accounts (Sobeys, Lindt, Kellogg's, Pepsi, Mondelēz) on shipment schedules.",
           'Maintained lead times in TC Software and ran Excel-based validation to improve reporting accuracy.',

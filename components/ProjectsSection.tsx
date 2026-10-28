@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { projects, type ProjectItem } from '@/data/projects';
+import { Highlight } from './Highlight';
 
 const HASH_PREFIX = '#project-';
 
@@ -217,7 +218,9 @@ export function ProjectsSection() {
                   className="aspect-video w-full object-cover transition-transform duration-200 group-hover:scale-105"
                 />
               </span>
-              <span className="mt-2 block font-semibold">{p.title}</span>
+              <span className="mt-2 block font-semibold">
+                <Highlight tone={p.tone} className="-ml-1">{p.title}</Highlight>
+              </span>
               <span className="block text-sm text-foreground/60">{p.tagline}</span>
             </button>
             <button

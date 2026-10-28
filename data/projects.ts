@@ -3,8 +3,11 @@ export interface ProjectLink {
   href: string;
 }
 
+import type { HighlightTone } from '@/components/Highlight';
+
 export interface ProjectItem {
   slug: string;
+  tone: HighlightTone;
   title: string;
   tagline: string;
   meta: string;
@@ -19,6 +22,7 @@ export interface ProjectItem {
 export const projects: ProjectItem[] = [
   {
     slug: 'vaultq',
+    tone: 'blue',
     title: 'VaultQ',
     tagline: 'Inventory, pricing & cross-listing for sneaker resale',
     meta: 'Co-founder · Apr 2026 – Present · closed beta',
@@ -37,6 +41,7 @@ export const projects: ProjectItem[] = [
   },
   {
     slug: 'beacon',
+    tone: 'teal',
     title: 'Beacon',
     tagline: 'AI clinical copilot for Ontario primary care',
     meta: 'AGI Ventures Healthcare Hackathon · Jul 2026 · 24 hours',
@@ -54,6 +59,7 @@ export const projects: ProjectItem[] = [
   },
   {
     slug: 'alten',
+    tone: 'green',
     title: 'Alten',
     tagline: 'Online help for seniors that points, speaks & protects',
     meta: 'Chrome extension · Sep 2026',
@@ -76,6 +82,7 @@ export const projects: ProjectItem[] = [
   },
   {
     slug: 'emoticare',
+    tone: 'garnet',
     title: 'EmotiCare',
     tagline: 'Real-time emotional wellness dashboard for classrooms',
     meta: 'uOttawa Design Day winner · Jan – Mar 2026',

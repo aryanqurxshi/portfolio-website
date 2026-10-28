@@ -63,6 +63,39 @@ body {
   color: var(--hl-text);
 }
 
+/* Per-brand highlighter colours: VaultQ blue, Beacon teal, Alten lime,
+   uOttawa garnet, Palace.to purple. Unset tone keeps the yellow default. */
+.hl[data-tone='blue'] { --hl: #cfe2ff; }
+.hl[data-tone='teal'] { --hl: #c6f2e9; }
+.hl[data-tone='green'] { --hl: #e6fa9e; }
+.hl[data-tone='garnet'] { --hl: #f8d3da; }
+.hl[data-tone='purple'] { --hl: #e6d9ff; }
+
+:root[data-theme='dark'] .hl[data-tone='blue'] { --hl: #6aafff; }
+:root[data-theme='dark'] .hl[data-tone='teal'] { --hl: #5eead4; }
+:root[data-theme='dark'] .hl[data-tone='green'] { --hl: #d4f542; }
+:root[data-theme='dark'] .hl[data-tone='garnet'] { --hl: #f49aab; }
+:root[data-theme='dark'] .hl[data-tone='purple'] { --hl: #b9a0ff; }
+
+/* Name typed out on first load */
+.type-caret {
+  animation: caret-blink 1.06s steps(1) infinite;
+}
+
+@keyframes caret-blink {
+  50% { opacity: 0; }
+}
+
+/* Character idles with a gentle bob */
+.char-bob {
+  animation: char-bob 3.2s ease-in-out infinite;
+}
+
+@keyframes char-bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
 .hover-card {
   background: #1e1e1e;
   border-radius: 6px;
@@ -75,5 +108,9 @@ body {
   }
   .hl {
     transition: none;
+  }
+  .char-bob,
+  .type-caret {
+    animation: none;
   }
 }
