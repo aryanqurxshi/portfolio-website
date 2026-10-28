@@ -1,57 +1,48 @@
-'use client';
+import { Hero } from '@/components/Hero';
+import { StickyHeader } from '@/components/StickyHeader';
+import { Sidebar } from '@/components/Sidebar';
+import { WorkSection } from '@/components/WorkSection';
+import { ProjectsSection } from '@/components/ProjectsSection';
+import { AwardsSection, EducationSection } from '@/components/AwardsEducation';
+import { SocialIcons } from '@/components/SocialIcons';
+import { CommandPalette } from '@/components/CommandPalette';
+import { Buddy } from '@/components/Buddy';
+import { ArcadeGame } from '@/components/ArcadeGame';
+import { GameLayer } from '@/components/GameLayer';
+import { GameToggle } from '@/components/GameToggle';
+import { profile } from '@/data/profile';
 
-import { useEffect, useState } from 'react';
-import { Navbar }              from '../components/Navbar';
-import { HeroSection }         from '../components/HeroSection';
-import { QuestsSection }       from '../components/sections/QuestsSection';
-import { InventorySection }    from '../components/sections/InventorySection';
-import { TrophiesSection }     from '../components/sections/TrophiesSection';
-import { SkillsSection }       from '../components/sections/SkillsSection';
-import { BonusLevelSection }   from '../components/sections/BonusLevelSection';
-import { ContactSection }      from '../components/sections/ContactSection';
-import { Footer }              from '../components/Footer';
-import { BootSequence }        from '../components/BootSequence';
-import { FpsCounter }          from '../components/FpsCounter';
-import { EasterEggs }          from '../components/EasterEggs';
-
-export default function HomePage() {
-  const [theme, setTheme] = useState<'dark' | 'light'>('dark');
-
-  useEffect(() => {
-    const stored = window.localStorage.getItem('portfolio-theme');
-    if (stored === 'light' || stored === 'dark') setTheme(stored);
-  }, []);
-
-  useEffect(() => {
-    document.documentElement.classList.toggle('theme-light', theme === 'light');
-    document.documentElement.classList.toggle('theme-dark',  theme === 'dark');
-    window.localStorage.setItem('portfolio-theme', theme);
-  }, [theme]);
-
+export default function Home() {
   return (
-    <>
-      <BootSequence />
-      <FpsCounter />
-      <EasterEggs />
+    <div className="min-h-screen lg:pl-56">
+      <Sidebar />
+      <StickyHeader />
+      <Buddy />
+      <ArcadeGame />
+      <GameToggle variant="corner" className="fixed right-5 top-5 z-[46] hidden lg:flex" />
+      <CommandPalette />
+      <GameLayer />
 
-      <main className="relative overflow-x-hidden">
-        <Navbar theme={theme} onToggleTheme={() => setTheme(theme === 'dark' ? 'light' : 'dark')} />
-
-        {/* Hero gradient bloom */}
-        <div className="pointer-events-none absolute inset-x-0 top-0 h-[420px] bg-hero opacity-80 blur-3xl" />
-
-        <div className="mx-auto max-w-7xl px-0 sm:px-0 lg:px-0">
-          <HeroSection />
-          <QuestsSection />
-          <InventorySection />
-          <TrophiesSection />
-          <SkillsSection />
-          <BonusLevelSection />
-          <ContactSection />
-        </div>
-
-        <Footer />
+      <main className="relative mx-auto max-w-page px-6">
+        <Hero />
+        <hr className="border-t border-divider" />
+        <WorkSection />
+        <hr className="border-t border-divider" />
+        <ProjectsSection />
+        <hr className="border-t border-divider" />
+        <AwardsSection />
+        <hr className="border-t border-divider" />
+        <EducationSection />
+        <footer className="flex flex-wrap items-center justify-between gap-4 border-t border-divider py-10 pb-32 text-sm text-meta sm:pb-40">
+          <p>
+            © {new Date().getFullYear()} {profile.name} ·{' '}
+            <a href={`mailto:${profile.email}`} className="underline underline-offset-2 hover:text-foreground">
+              {profile.email}
+            </a>
+          </p>
+          <SocialIcons className="flex" />
+        </footer>
       </main>
-    </>
+    </div>
   );
 }

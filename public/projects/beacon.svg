@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" font-family="Inter, -apple-system, Helvetica, Arial, sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b1f33"/>
+      <stop offset="1" stop-color="#0f3b4f"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.2" cy="0.35" r="0.5">
+      <stop offset="0" stop-color="#5eead4" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#5eead4" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1280" height="720" fill="url(#bg)"/>
+  <rect width="1280" height="720" fill="url(#glow)"/>
+
+  <!-- wordmark -->
+  <g transform="translate(96 250)">
+    <circle cx="28" cy="28" r="28" fill="#5eead4"/>
+    <circle cx="28" cy="28" r="12" fill="#0b1f33"/>
+    <circle cx="28" cy="28" r="44" fill="none" stroke="#5eead4" stroke-opacity="0.35" stroke-width="3"/>
+    <text x="96" y="46" font-size="64" font-weight="700" fill="#ffffff" letter-spacing="-1.5">Beacon</text>
+    <text x="0" y="128" font-size="28" fill="#b6d4df">AI clinical copilot for</text>
+    <text x="0" y="166" font-size="28" fill="#b6d4df">Ontario primary care</text>
+    <g transform="translate(0 214)" font-size="18" font-weight="600">
+      <rect width="138" height="38" rx="19" fill="#5eead4" fill-opacity="0.15" stroke="#5eead4" stroke-opacity="0.5"/>
+      <text x="69" y="25" text-anchor="middle" fill="#5eead4">SOAP notes</text>
+      <rect x="152" width="146" height="38" rx="19" fill="#5eead4" fill-opacity="0.15" stroke="#5eead4" stroke-opacity="0.5"/>
+      <text x="225" y="25" text-anchor="middle" fill="#5eead4">OHIP billing</text>
+      <rect x="312" width="134" height="38" rx="19" fill="#5eead4" fill-opacity="0.15" stroke="#5eead4" stroke-opacity="0.5"/>
+      <text x="379" y="25" text-anchor="middle" fill="#5eead4">Inbox triage</text>
+    </g>
+  </g>
+
+  <!-- note card -->
+  <g transform="translate(700 140)">
+    <rect x="12" y="14" width="480" height="440" rx="20" fill="#000" fill-opacity="0.3"/>
+    <rect width="480" height="440" rx="20" fill="#f8fafc"/>
+    <rect width="480" height="58" rx="20" fill="#e2e8f0"/>
+    <rect y="38" width="480" height="20" fill="#e2e8f0"/>
+    <circle cx="30" cy="29" r="7" fill="#f87171"/>
+    <circle cx="54" cy="29" r="7" fill="#fbbf24"/>
+    <circle cx="78" cy="29" r="7" fill="#34d399"/>
+    <text x="108" y="35" font-size="17" fill="#475569" font-family="ui-monospace, Menlo, monospace">soap-note · draft</text>
+
+    <g font-size="15" font-weight="700" fill="#0f766e" letter-spacing="1.5">
+      <text x="32" y="102">S · SUBJECTIVE</text>
+      <text x="32" y="192">O · OBJECTIVE</text>
+      <text x="32" y="282">A · ASSESSMENT</text>
+      <text x="32" y="372">P · PLAN</text>
+    </g>
+    <g fill="#cbd5e1">
+      <rect x="32" y="116" width="400" height="12" rx="6"/>
+      <rect x="32" y="138" width="320" height="12" rx="6"/>
+      <rect x="32" y="206" width="380" height="12" rx="6"/>
+      <rect x="32" y="228" width="260" height="12" rx="6"/>
+      <rect x="32" y="296" width="410" height="12" rx="6"/>
+      <rect x="32" y="318" width="300" height="12" rx="6"/>
+      <rect x="32" y="386" width="230" height="12" rx="6"/>
+    </g>
+    <rect x="286" y="374" width="166" height="40" rx="10" fill="#0f766e"/>
+    <text x="369" y="400" text-anchor="middle" font-size="16" font-weight="600" fill="#ffffff">Review &amp; sign</text>
+  </g>
+</svg>

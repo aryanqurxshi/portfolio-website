@@ -1,64 +1,87 @@
 export interface ExperienceItem {
-  title: string;
+  role: string;
   company: string;
+  url?: string;
   range: string;
   location: string;
-  summary: string;
-  whatIDid?: string[];
-  howIDid?: string[];
-  skillsLearned?: string[];
-  technologies?: string[];
-  achievements?: string[];
-  links?: {
-    website?: string;
-    instagram?: string;
-  };
+  logo?: string;
+  // Shown under the row without expanding (used for the current role).
+  summary?: string;
+  points: string[];
+  tags: string[];
+  // Slug of a project in data/projects.ts to cross-link to.
+  project?: string;
 }
 
-export const experience: ExperienceItem[] = [
+export interface ExperienceGroup {
+  label: string;
+  items: ExperienceItem[];
+}
+
+export const experience: ExperienceGroup[] = [
   {
-    title: 'Customer Success Specialist',
-    company: 'The Logistics Alliance',
-    range: 'July 2025 – September 2025',
-    location: 'Missisauga, ON',
-    summary:
-      'Worked within the Customer Success department, supporting enterprise-level clients and ensuring seamless communication regarding shipment schedules, transit delays, and delivery performance.',
-    whatIDid: [
-      'Served as the primary point of contact for enterprise customers including Sobeys, Lindt, Kellogg’s, Pepsi, and Mondelēz.',
-      'Monitored shipments daily to identify delays and proactively coordinated resolution across operations teams.',
-      'Maintained accurate lead times in TC Software and communicated updates to customer stakeholders.',
+    label: 'Building',
+    items: [
+      {
+        role: 'Co-Founder & Engineer',
+        company: 'VaultQ',
+        range: 'Apr 2026 – Present',
+        location: 'Ajax, ON',
+        logo: '/logos/vaultq-mark.png',
+        summary:
+          'Co-founded VaultQ, my startup: one place for sneaker resellers to price, track, and sell their inventory — on iPhone and the web.',
+        points: [
+          'Tells resellers what a pair is worth right now and what they can safely pay for it.',
+          'Keeps a whole collection organized: what you paid, what it’s worth today, and what you’ve made.',
+          'Lets resellers list pairs for sale on major marketplaces straight from their inventory.',
+          'Running a closed beta with 5 active testers ahead of App Store launch.',
+        ],
+        tags: ['Startup', 'iOS', 'Web', 'Resale'],
+        project: 'vaultq',
+      },
+      {
+        role: 'Founder',
+        company: 'palace.to',
+        url: 'https://www.instagram.com/palace.to/',
+        range: 'Mar 2023 – Present',
+        location: 'Ajax, ON',
+        logo: '/logos/palace.jpg',
+        points: [
+          'Scaled a resale brand to $80,000+ in revenue, running sourcing, inventory, pricing, and Instagram-led marketing end to end.',
+        ],
+        tags: ['Resale', 'Pricing', 'Brand'],
+      },
     ],
-    howIDid: [
-      'Used TC Software to track customer-specific transit requirements and update shipment statuses.',
-      'Collaborated with internal operations, carriers, and customer success teams to resolve logistics issues.',
-      'Performed Excel-driven data validation and cleanup to improve reporting accuracy.',
-    ],
-    skillsLearned: ['Customer communication', 'Logistics coordination', 'Data accuracy', 'Issue escalation'],
-    technologies: ['TC Software', 'Microsoft Excel'],
-    achievements: ['Maintained timely communication for major retail accounts', 'Improved lead-time accuracy and reporting reliability'],
   },
   {
-    title: 'Founder',
-    company: 'Palace.to',
-    range: 'March 2023',
-    location: 'Ajax, ON',
-    summary:
-      'Built a resale brand generating $80,000+ in sales, managing sourcing, pricing, inventory, and customer service across Instagram with a focus on brand positioning and growth.',
-    whatIDid: [
-      'Established sourcing and pricing workflows for resale inventory.',
-      'Managed customer service and order logistics through social commerce.',
-      'Designed brand strategy and promotional campaigns on Instagram.',
+    label: 'Internships',
+    items: [
+      {
+        role: 'Data Intern, Supply Chain Management',
+        company: 'The Logistics Alliance',
+        range: 'May 2026 – Aug 2026',
+        location: 'Mississauga, ON',
+        logo: '/logos/logistics-alliance.png',
+        url: 'https://logisticsalliance.com',
+        points: [
+          'Built an internal tool that catches incorrect file types at intake and tunes the flagging filter against recurring patterns in rejected paperwork, reducing documents held for missing information.',
+          'Reconciled Bills of Lading and Inbound Control Forms against system records and traced pipeline exceptions to root cause before they reached inventory counts.',
+        ],
+        tags: ['Data quality', 'Internal tooling', 'Excel'],
+      },
+      {
+        role: 'Customer Success Intern',
+        company: 'The Logistics Alliance',
+        range: 'Jul 2025 – Sep 2025',
+        location: 'Mississauga, ON',
+        logo: '/logos/logistics-alliance.png',
+        url: 'https://logisticsalliance.com',
+        points: [
+          "Supported enterprise accounts (Sobeys, Lindt, Kellogg's, Pepsi, Mondelēz) on shipment schedules.",
+          'Maintained lead times in TC Software and ran Excel-based validation to improve reporting accuracy.',
+        ],
+        tags: ['TC Software', 'Excel', 'Enterprise accounts'],
+      },
     ],
-    howIDid: [
-      'Leveraged Instagram for product discovery, customer outreach, and sales conversion.',
-      'Tracked inventory and pricing in spreadsheets to support sales targets.',
-      'Analyzed customer preferences and adapted product selection accordingly.',
-    ],
-    skillsLearned: ['Brand strategy', 'Digital marketing', 'Customer negotiation', 'Inventory management'],
-    technologies: ['Instagram', 'Spreadsheet analytics'],
-    achievements: ['Generated over $80,000 in resale revenue', 'Built a consistent online storefront and customer experience'],
-    links: {
-      instagram: 'https://www.instagram.com/palace.to/',
-    },
   },
 ];
