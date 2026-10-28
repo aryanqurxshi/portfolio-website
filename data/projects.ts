@@ -15,6 +15,8 @@ export interface ProjectItem {
   gallery?: { src: string; alt: string }[];
   overview: string;
   highlights: string[];
+  // Heading over the stack chips; defaults to "Built with".
+  stackLabel?: string;
   stack: string[];
   links: ProjectLink[];
 }
@@ -24,19 +26,22 @@ export const projects: ProjectItem[] = [
     slug: 'vaultq',
     tone: 'blue',
     title: 'VaultQ',
-    tagline: 'Inventory, pricing & cross-listing for sneaker resale',
-    meta: 'Co-founder · Apr 2026 – Present · closed beta',
+    tagline: 'Price, track & sell your sneaker inventory in one place',
+    meta: 'My startup · Co-founder · Closed beta',
     image: '/projects/vaultq.jpg',
     overview:
-      'An iOS app and a web dashboard over one Express API that owns the market data, the pricing engine, and putting stock on sale across marketplaces.',
+      'VaultQ is the all-in-one toolkit for sneaker resellers: know what a pair is worth, decide what to pay, keep your collection organized, and sell it — from your iPhone or the web.',
     highlights: [
-      'Pricing engine blends bid, ask, and last-sale signals into a market value, then works backward through fees, shipping, condition, and target margin to a safe-buy price with a BUY / WATCH / PASS call.',
-      'Barcode scanner resolves a box label to a product with live market data and a safe-buy price.',
-      'Cross-lists pairs to StockX from the vault, with a guard that refuses an ask which would transact against a standing bid.',
-      '482-test Vitest suite with golden tests pinning pricing output across refactors.',
-      'Multi-tenant isolation enforced by Postgres row-level security on 9 tables, not application filters.',
+      'Live market value for any pair, with a clear Buy / Watch / Pass call on whether a deal is worth it.',
+      'Scan a box label to pull up the shoe and its price instantly.',
+      'Your vault: what you paid, what it’s worth today, and your profit across the whole collection.',
+      'Watchlist alerts when a pair drops into your buy range.',
+      'List pairs for sale on major marketplaces straight from your inventory.',
+      'Built for teams, so a reselling business can work from one shared inventory.',
+      'In closed beta with 5 active testers; App Store launch coming soon.',
     ],
-    stack: ['SwiftUI', 'SwiftData', 'Next.js', 'Express', 'TypeScript', 'PostgreSQL', 'Vitest'],
+    stackLabel: 'Available on',
+    stack: ['iPhone', 'Web'],
     links: [],
   },
   {

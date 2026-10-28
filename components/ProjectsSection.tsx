@@ -53,7 +53,7 @@ function ProjectModal({
         role="dialog"
         aria-modal="true"
         aria-labelledby="project-modal-title"
-        className="relative max-h-[92vh] w-full max-w-[680px] overflow-y-auto rounded-t-2xl bg-background shadow-2xl sm:rounded-2xl"
+        className="pixel-frame relative max-h-[92vh] w-full max-w-[680px] overflow-y-auto rounded-t-2xl bg-background shadow-2xl sm:rounded-2xl"
         initial={{ y: 24, scale: 0.98, opacity: 0 }}
         animate={{ y: 0, scale: 1, opacity: 1 }}
         exit={{ y: 24, scale: 0.98, opacity: 0 }}
@@ -130,7 +130,7 @@ function ProjectModal({
           )}
 
           <div>
-            <h4 className="mb-2 text-xs font-semibold uppercase tracking-[0.15em] text-tertiary">Built with</h4>
+            <h4 className="mb-2 text-xs font-semibold uppercase tracking-[0.15em] text-tertiary">{project.stackLabel ?? 'Built with'}</h4>
             <div className="flex flex-wrap gap-2">
               {project.stack.map((s) => (
                 <span key={s} className="rounded-full bg-well px-2.5 py-1 text-xs text-foreground/80">
@@ -202,14 +202,14 @@ export function ProjectsSection() {
 
   return (
     <section id="projects" className="py-8" aria-labelledby="projects-heading">
-      <h2 id="projects-heading" className="mb-5 text-3xl font-semibold tracking-tight">
+      <h2 id="projects-heading" data-game="INVENTORY" className="mb-5 text-3xl font-semibold tracking-tight">
         Projects
       </h2>
       <div className="grid gap-x-6 gap-y-8 sm:grid-cols-2">
         {projects.map((p) => (
           <div key={p.slug} id={`project-${p.slug}`} className="scroll-mt-24">
             <button type="button" aria-haspopup="dialog" onClick={() => open(p.slug)} className="group block w-full text-left">
-              <span className="block overflow-hidden rounded-lg bg-well">
+              <span className="pixel-frame block overflow-hidden rounded-lg bg-well transition-transform game:group-hover:-translate-y-1">
                 <Image
                   src={p.image}
                   alt=""

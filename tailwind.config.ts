@@ -1,4 +1,5 @@
 import type { Config } from 'tailwindcss';
+import plugin from 'tailwindcss/plugin';
 
 const config: Config = {
   content: ['./app/**/*.{ts,tsx}', './components/**/*.{ts,tsx}'],
@@ -18,13 +19,18 @@ const config: Config = {
       fontFamily: {
         sans: ['var(--font-sans)', 'ui-sans-serif', 'system-ui', 'sans-serif'],
         display: ['var(--font-display)', 'Georgia', 'serif'],
+        pixel: ['var(--font-pixel)', 'ui-monospace', 'monospace'],
+        arcade: ['var(--font-arcade)', 'ui-monospace', 'monospace'],
       },
       maxWidth: {
         page: '720px',
       },
     },
   },
-  plugins: [],
+  plugins: [
+    // `game:` styles only apply while game mode is on.
+    plugin(({ addVariant }) => addVariant('game', ':root[data-mode="game"] &')),
+  ],
 };
 
 export default config;

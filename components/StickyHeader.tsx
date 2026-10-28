@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { navLinks, profile } from '@/data/profile';
 import { ThemeToggle } from './ThemeToggle';
+import { GameToggle } from './GameToggle';
 import { SocialIcons } from './SocialIcons';
 
 /** Slides in once the main nav scrolls away, and underlines the section in view. */
@@ -36,7 +37,7 @@ export function StickyHeader() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-40 border-b border-divider/50 bg-background/95 backdrop-blur transition-all duration-300 ${
+      className={`fixed inset-x-0 top-0 z-40 border-b lg:hidden border-divider/50 bg-background/95 backdrop-blur transition-all duration-300 ${
         visible ? 'translate-y-0 opacity-100' : 'pointer-events-none -translate-y-full opacity-0'
       }`}
     >
@@ -59,6 +60,7 @@ export function StickyHeader() {
         </nav>
         <div className="flex items-center gap-4">
           <SocialIcons className="hidden sm:flex" />
+          <GameToggle variant="icon" />
           <ThemeToggle />
         </div>
       </div>

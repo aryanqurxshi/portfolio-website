@@ -88,7 +88,7 @@ function Row({ item, defaultOpen }: { item: ExperienceItem; defaultOpen: boolean
 export function WorkSection() {
   return (
     <section id="work" className="py-8" aria-labelledby="work-heading">
-      <h2 id="work-heading" className="mb-5 text-3xl font-semibold tracking-tight">
+      <h2 id="work-heading" data-game="QUEST LOG" className="mb-5 text-3xl font-semibold tracking-tight">
         Work
       </h2>
       <div className="space-y-8">

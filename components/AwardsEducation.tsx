@@ -5,7 +5,7 @@ import { UOttawaMark } from './UOttawaMark';
 export function AwardsSection() {
   return (
     <section id="awards" className="py-8" aria-labelledby="awards-heading">
-      <h2 id="awards-heading" className="mb-5 text-3xl font-semibold tracking-tight">
+      <h2 id="awards-heading" data-game="TROPHIES" className="mb-5 text-3xl font-semibold tracking-tight">
         Awards
       </h2>
       <ul className="divide-y divide-divider/60">
@@ -40,7 +40,7 @@ export function AwardsSection() {
 export function EducationSection() {
   return (
     <section id="education" className="py-8" aria-labelledby="education-heading">
-      <h2 id="education-heading" className="mb-5 text-3xl font-semibold tracking-tight">
+      <h2 id="education-heading" data-game="SKILL TREE" className="mb-5 text-3xl font-semibold tracking-tight">
         Education
       </h2>
       <ul>

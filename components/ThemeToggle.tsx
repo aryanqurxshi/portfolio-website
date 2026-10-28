@@ -1,25 +1,18 @@
 'use client';
 
+import { toggleTheme } from '@/lib/mode';
+
 interface ThemeToggleProps {
   className?: string;
 }
 
 export function ThemeToggle({ className = '' }: ThemeToggleProps) {
-  const toggle = () => {
-    const root = document.documentElement;
-    const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
-    root.dataset.theme = next;
-    try {
-      localStorage.setItem('theme', next);
-    } catch {}
-  };
-
   return (
     <button
       type="button"
-      onClick={toggle}
+      onClick={toggleTheme}
       aria-label="Toggle dark mode"
-      className={`shrink-0 cursor-pointer text-foreground transition-opacity hover:opacity-70 ${className}`}
+      className={`shrink-0 cursor-pointer text-foreground transition-opacity hover:opacity-70 game:hidden ${className}`}
     >
       {/* Both icons render; CSS picks one so there is no hydration mismatch. */}
       <svg

@@ -1,5 +1,5 @@
 import { navLinks, profile } from '@/data/profile';
-import { Character } from './Character';
+import { GameToggle } from './GameToggle';
 import { Highlight } from './Highlight';
 import { HoverCard } from './HoverCard';
 import { ThemeToggle } from './ThemeToggle';
@@ -19,14 +19,13 @@ function Bullet({ children }: { children: React.ReactNode }) {
 
 export function Hero() {
   return (
-    <header className="py-10 sm:pt-16">
-      <div className="flex items-end gap-8">
-        <div className="min-w-0 flex-1">
+    <header id="top" className="py-10 sm:pt-16">
+      <div>
+        <div>
           <div className="flex items-center justify-between gap-4">
             <h1 className="font-display text-[2.75rem] italic leading-none tracking-tight sm:text-6xl">
               <TypingName text={profile.name} />
             </h1>
-            <ThemeToggle className="sm:hidden" />
           </div>
 
           <div className="mt-6 space-y-4">
@@ -42,11 +41,11 @@ export function Hero() {
 
             <ul className="space-y-2 leading-relaxed text-foreground/80">
               <Bullet>
-                co-founder &amp; engineer at{' '}
-                <HoverCard image="/projects/vaultq.jpg" caption="Resale inventory: iOS app + dashboard on one API" href="#project-vaultq">
+                co-founder of{' '}
+                <HoverCard image="/projects/vaultq.jpg" caption="My startup · in closed beta" href="#project-vaultq">
                   <Highlight tone="blue" delay={0}>VaultQ</Highlight>
                 </HoverCard>
-                , pricing and cross-listing for sneaker resale
+                , my startup helping sneaker resellers price, track &amp; sell
               </Bullet>
               <Bullet>
                 built{' '}
@@ -70,8 +69,8 @@ export function Hero() {
               </Bullet>
               <Bullet>
                 scaled{' '}
-                <HoverCard caption="Sourcing, pricing, inventory & Instagram marketing, end to end" href="https://www.instagram.com/palace.to/">
-                  <Highlight tone="purple" delay={600}>Palace.to</Highlight>
+                <HoverCard image="/projects/palace.jpg" caption="My sneaker resale brand · @palace.to" href="https://www.instagram.com/palace.to/">
+                  <Highlight tone="purple" delay={600}>palace.to</Highlight>
                 </HoverCard>{' '}
                 to $80K+ in resale revenue
               </Bullet>
@@ -82,7 +81,6 @@ export function Hero() {
           </div>
         </div>
 
-        <Character className="mb-1 hidden h-[260px] sm:block" />
       </div>
 
       <div className="mt-6 flex items-end justify-between gap-4">
@@ -103,7 +101,6 @@ export function Hero() {
             Let&apos;s Connect!
           </a>
         </p>
-        <Character className="-mb-1 h-28 sm:hidden" bubble="left" />
       </div>
 
       <nav id="main-nav" className="mt-8 flex flex-wrap items-baseline gap-x-8 gap-y-2 text-xl" aria-label="Main">
@@ -112,7 +109,10 @@ export function Hero() {
             {l.label}
           </a>
         ))}
-        <ThemeToggle className="ml-auto hidden self-center sm:inline-flex" />
+        <div className="ml-auto hidden items-center gap-4 self-center sm:flex lg:hidden">
+          <GameToggle variant="icon" />
+          <ThemeToggle />
+        </div>
       </nav>
     </header>
   );

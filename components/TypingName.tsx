@@ -26,7 +26,7 @@ export function TypingName({ text }: { text: string }) {
   return (
     <>
       <span className="sr-only">{text}</span>
-      <span aria-hidden="true" className="whitespace-nowrap">
+      <span aria-hidden="true">
         {text.slice(0, count)}
         <span className="type-caret ml-0.5 inline-block h-[0.8em] w-[2px] bg-foreground/70 align-middle" />
         {/* Invisible remainder reserves the full width so nothing shifts while typing. */}

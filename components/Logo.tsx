@@ -3,7 +3,7 @@ import Image from 'next/image';
 /** Company logo tile, falling back to a monogram when there is no image. */
 export function Logo({ src, name }: { src?: string; name: string }) {
   if (src) {
-    return <Image src={src} alt="" width={40} height={40} className="h-10 w-10 shrink-0 rounded-md object-cover" />;
+    return <Image src={src} alt="" width={40} height={40} className="pixel-frame h-10 w-10 shrink-0 rounded-md object-cover" />;
   }
   const initials = name
     .split(/[\s.]+/)
