@@ -23,11 +23,11 @@ const arcade = VT323({ subsets: ['latin'], weight: '400', variable: '--font-arca
 export const metadata: Metadata = {
   title: 'Aryan Qureshi',
   description: 'Electrical Engineering & Management @ University of Ottawa. Co-founder of VaultQ.',
-  metadataBase: new URL('https://aryanqureshi.ca'),
+  metadataBase: new URL('https://www.aryanqureshi.my'),
   openGraph: {
     title: 'Aryan Qureshi',
     description: 'Electrical Engineering & Management @ University of Ottawa. Co-founder of VaultQ.',
-    url: 'https://aryanqureshi.ca',
+    url: 'https://www.aryanqureshi.my',
     type: 'website',
   },
 };
